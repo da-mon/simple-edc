@@ -7,3 +7,14 @@
 
 <%= link_to 'Edit', edit_study_path(@study) %> |
 <%= link_to 'Back', studies_path %>
+
+<table>
+  <tr>
+    <td>Users</td>
+    <td>
+      <% @study.study_users.each do |study_user| %>
+          <%= study_user.user.name %>
+      <% end %>
+    </td>
+  </tr>
+</table>

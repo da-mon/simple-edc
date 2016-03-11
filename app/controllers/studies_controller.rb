@@ -5,7 +5,6 @@ class StudiesController < ApplicationController
   # GET /studies.json
   def index
     @studies = current_user.studies
-    # @studies = Study.all
   end
 
   # GET /studies/1
@@ -25,12 +24,8 @@ class StudiesController < ApplicationController
   # POST /studies
   # POST /studies.json
   def create
-    @study = Study.new(study_params)
-    @user = current_user
-    @user.studies << @study
     respond_to do |format|
-      if @study.save && @user.save
-      #if @study.save
+      if create_study
         format.html { redirect_to @study, notice: 'Study was successfully created.' }
         format.json { render :show, status: :created, location: @study }
       else
@@ -57,21 +52,33 @@ class StudiesController < ApplicationController
   # DELETE /studies/1
   # DELETE /studies/1.json
   def destroy
-    @study.destroy
+    delete_study
     respond_to do |format|
       format.html { redirect_to studies_url, notice: 'Study was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_study
-      @study = Study.find(params[:id])
-    end
+  def delete_study
+    current_user.studies.delete(@study)
+    @study.destroy
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def study_params
-      params.require(:study).permit(:name)
-    end
+  private
+  def create_study
+    # @study = Study.new(study_params)
+    @study = current_user.studies.create(study_params)
+    # @study.save && current_user.studies << @study
+    # @study.save
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_study
+    @study = Study.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def study_params
+    params.require(:study).permit(:name)
+  end
 end
