@@ -17,7 +17,7 @@
         <td><%= study_user.study.name %></td>
         <td><%= study_user.user.name %></td>
         <td><%= link_to 'Show', [study_user.study, study_user] %></td>
-        <td><%= link_to 'Edit', edit_study_study_user_path(study_user.study, study_user) %></td>
+        <td><%= link_to 'Edit', edit__study_user_path(study_user.study, study_user) %></td>
         <td><%= link_to 'Destroy', [study_user.study, study_user], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Study user', new_study_study_user_path %>
+<%= link_to 'New Study user', new__study_user_path %>

@@ -15,6 +15,7 @@
       <% @study.forms.each do |form| %>
           <%= form.name %>
       <% end %>
+      <%= link_to 'New Form', new_study_form_path(@study) %>
     </td>
   </tr>
   <tr>
@@ -23,6 +24,7 @@
       <% @study.events.each do |event| %>
           <%= event.name %>
       <% end %>
+      <%= link_to 'New Event', new_study_event_path(@study) %>
     </td>
   </tr>
   <tr>
@@ -31,6 +33,7 @@
       <% @study.study_users.each do |study_user| %>
           <%= study_user.user.name %>
       <% end %>
+      <%= link_to 'New User', new_study_user_path(@study) %>
     </td>
   </tr>
 </table>

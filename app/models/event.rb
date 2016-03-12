@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
-  belongs_to :study
-  has_many :event_forms
+  has_many :studies, :through => :study_events, :autosave => true
+  has_many :study_event_forms
 end
