@@ -10,6 +10,22 @@
 
 <table>
   <tr>
+    <td>Forms</td>
+    <td>
+      <% @study.forms.each do |form| %>
+          <%= form.name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Events</td>
+    <td>
+      <% @study.events.each do |event| %>
+          <%= event.name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <td>Users</td>
     <td>
       <% @study.study_users.each do |study_user| %>
