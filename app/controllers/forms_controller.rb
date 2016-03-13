@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_action :set_study
+  include StudyController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
 
   # GET /forms
@@ -65,10 +65,6 @@ class FormsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def create_form
     @form = @study.forms.create(form_params)
-  end
-
-  def set_study
-    @study = Study.find(params[:study_id])
   end
 
   def set_form

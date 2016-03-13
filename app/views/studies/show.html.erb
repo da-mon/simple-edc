@@ -4,22 +4,29 @@
   <strong>Name:</strong>
   <%= @study.name %>
 </p>
-<table>
+<table class = "table">
   <tr>
-    <td>Forms</td>
+    <td style="width:10%;">Forms</td>
     <td>
       <% @study.forms.each do |form| %>
           <%= link_to form.name, edit_study_form_path(@study, form) %>
       <% end %>
-      <%= link_to 'New Form', new_study_form_path(@study) %>
+      <br/><%= link_to 'New Form', new_study_form_path(@study) %>
     </td>
   </tr>
   <tr>
     <td>Events</td>
     <td>
       <% @study.events.each do |event| %>
-          <%= event.name %>
+          <%= link_to event.name, edit_study_event_path(@study, event) %>
+          <% @study.forms.each do |form| %>
+              <%= link_to form.name, edit_study_form_path(@study, form) %>
+          <% end %>
+          <br/>
       <% end %>
+
+
+
       <%= link_to 'New Event', new_study_event_path(@study) %>
     </td>
   </tr>

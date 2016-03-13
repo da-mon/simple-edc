@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312113853) do
+ActiveRecord::Schema.define(version: 20160313104001) do
+
+  create_table "centres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -20,11 +26,12 @@ ActiveRecord::Schema.define(version: 20160312113853) do
   end
 
   create_table "fields", force: :cascade do |t|
-    t.string   "name"
+    t.string   "code"
     t.integer  "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "form_id"
+    t.string   "label"
   end
 
   add_index "fields", ["form_id"], name: "index_fields_on_form_id"
@@ -69,14 +76,14 @@ ActiveRecord::Schema.define(version: 20160312113853) do
   end
 
   create_table "study_event_forms", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "form_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "study_event_id"
+    t.integer  "study_form_id"
   end
 
-  add_index "study_event_forms", ["event_id"], name: "index_study_event_forms_on_event_id"
-  add_index "study_event_forms", ["form_id"], name: "index_study_event_forms_on_form_id"
+  add_index "study_event_forms", ["study_event_id"], name: "index_study_event_forms_on_study_event_id"
+  add_index "study_event_forms", ["study_form_id"], name: "index_study_event_forms_on_study_form_id"
 
   create_table "study_events", force: :cascade do |t|
     t.integer  "event_id"

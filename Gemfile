@@ -8,6 +8,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'haml'
+gem 'haml-rails'
 # gem 'attr_extras'
 group :development, :test do
   gem 'byebug'
