@@ -1,0 +1,7 @@
+.nested-fields
+  = f.inputs do
+    = f.inputs
+    -#= f.input :code
+    -#= f.input :label
+    -#-#= f.input :type
+    = link_to_remove_association 'remove field', f
