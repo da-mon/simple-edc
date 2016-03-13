@@ -1,4 +1,4 @@
 class Field < ActiveRecord::Base
   belongs_to :form
-  # enum type: [:string, :integer, :date]
+  belongs_to :field_type
 end

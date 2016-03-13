@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313130537) do
+ActiveRecord::Schema.define(version: 20160313144736) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -25,15 +25,22 @@ ActiveRecord::Schema.define(version: 20160313130537) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fields", force: :cascade do |t|
-    t.string   "code"
-    t.integer  "field_type"
+  create_table "field_types", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "form_id"
-    t.string   "label"
   end
 
+  create_table "fields", force: :cascade do |t|
+    t.string   "code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "form_id"
+    t.string   "label"
+    t.integer  "field_type_id"
+  end
+
+  add_index "fields", ["field_type_id"], name: "index_fields_on_field_type_id"
   add_index "fields", ["form_id"], name: "index_fields_on_form_id"
 
   create_table "forms", force: :cascade do |t|
