@@ -1,0 +1,31 @@
+= form_for([@study, @form]) do |f|
+  - if @form.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@form.errors.count, "error")
+        prohibited this form from being saved:
+      %ul
+        - @form.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %fieldset
+    %legend Fields
+    = f.fields_for :fields do |fields_form|
+      %fieldset
+        .field
+          = fields_form.label :code
+          %br/
+          = fields_form.text_field :code
+        .field
+          = fields_form.label :label
+          %br/
+          = fields_form.text_field :label
+        .field
+          = fields_form.label :type
+          %br/
+          = fields_form.text_field :type
+  .actions
+    = f.submit

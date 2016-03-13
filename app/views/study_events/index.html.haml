@@ -1,0 +1,14 @@
+%p#notice= notice
+%h1 Listing Study Events
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @study_events.each do |study_event|
+      %tr
+        %td= link_to 'Show', study_event
+        %td= link_to 'Edit', edit_study_event_path(study_event)
+        %td= link_to 'Destroy', study_event, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Study event', new_study_event_path

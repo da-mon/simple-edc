@@ -1,0 +1,31 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @study.name
+%table.table
+  %tr
+    %td{:style => 'width:10%;'} Forms
+    %td
+      - @study.forms.each do |form|
+        = link_to form.name, edit_study_form_path(@study, form)
+      %br/
+      = link_to 'New Form', new_study_form_path(@study)
+  %tr
+    %td Events
+    %td
+      - @study.events.each do |event|
+        = link_to event.name, edit_study_event_path(@study, event)
+        - @study.forms.each do |form|
+          = form.name
+        -#= link_to form.name, edit_study_form_path(@study, form)
+        %br/
+      = link_to 'New Event', new_study_event_path(@study)
+  %tr
+    %td Users
+    %td
+      - @study.study_users.each do |study_user|
+        = study_user.user.name
+      = link_to 'New User', new_study_user_path(@study)
+= link_to 'Edit', edit_study_path(@study)
+|
+= link_to 'Back to studies', studies_path

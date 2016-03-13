@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Study event:
+  = @study_event_form.study_event
+%p
+  %strong Study form:
+  = @study_event_form.study_form
+= link_to 'Edit', edit_study_event_form_path(@study_event_form)
+|
+= link_to 'Back', study_event_forms_path

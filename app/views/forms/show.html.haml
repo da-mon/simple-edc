@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @form.name
+= link_to 'Edit', edit_study_form_path(@study, @form)
+|
+= link_to 'Back to study', study_path(@study)
