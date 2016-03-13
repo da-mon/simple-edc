@@ -1,6 +1,5 @@
 .nested-fields
   = f.inputs do
-    -#= f.inputs
     = f.input :code
     = f.input :label
     = f.input :field_type, :label => 'Type'#, :as => :select, :collection => FieldType.all

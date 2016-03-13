@@ -40,6 +40,8 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
+      # if @event.study_event_forms.build(study_event_id: 2)
+      # if @event(event_params)
       if @event.update(event_params)
         format.html { redirect_to [@study, @event], notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: [@study, @event] }
@@ -72,6 +74,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name)
+    params.require(:event).permit(:name, study_event_forms_attributes: [:study_event_id, :study_form_id, :_destroy])
   end
 end
