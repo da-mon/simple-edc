@@ -66,15 +66,12 @@ class StudiesController < ApplicationController
 
   private
   def create_study
-    # @study = Study.new(study_params)
     @study = current_user.studies.create(study_params)
-    # @study.save && current_user.studies << @study
-    # @study.save
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_study
-    @study = Study.find(params[:id])
+    @study = current_user.studies.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

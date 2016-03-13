@@ -1,1 +1,1 @@
-json.extract! @form, :id, :created_at, :updated_at
+json.extract! @form, :id, :name, :created_at, :updated_at

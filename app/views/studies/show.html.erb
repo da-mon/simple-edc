@@ -4,16 +4,12 @@
   <strong>Name:</strong>
   <%= @study.name %>
 </p>
-
-<%= link_to 'Edit', edit_study_path(@study) %> |
-<%= link_to 'Back', studies_path %>
-
 <table>
   <tr>
     <td>Forms</td>
     <td>
       <% @study.forms.each do |form| %>
-          <%= form.name %>
+          <%= link_to form.name, edit_study_form_path(@study, form) %>
       <% end %>
       <%= link_to 'New Form', new_study_form_path(@study) %>
     </td>
@@ -37,3 +33,6 @@
     </td>
   </tr>
 </table>
+
+<%= link_to 'Edit', edit_study_path(@study) %> |
+<%= link_to 'Back to studies', studies_path %>

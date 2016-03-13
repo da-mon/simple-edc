@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+
   has_many :study_users
   has_many :studies, :through => :study_users, :autosave => true
+
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
