@@ -1,7 +1,7 @@
 = semantic_form_for [@study, @event] do |f|
   = f.inputs
-  = f.semantic_fields_for :study_event_forms do |sef|
-    = render 'study_event_form_fields', f: sef
+  = f.semantic_fields_for :event_forms do |fi|
+    = render 'event_form_fields', f: fi
   .links
-    = link_to_add_association 'add form', f, :study_event_forms
+    = link_to_add_association 'add form', f, :event_forms
   = f.actions

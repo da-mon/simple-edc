@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313144736) do
+ActiveRecord::Schema.define(version: 20160314090625) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -19,11 +19,24 @@ ActiveRecord::Schema.define(version: 20160313144736) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_forms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "form_id"
+    t.integer  "event_id"
+  end
+
+  add_index "event_forms", ["event_id"], name: "index_event_forms_on_event_id"
+  add_index "event_forms", ["form_id"], name: "index_event_forms_on_form_id"
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "study_id"
   end
+
+  add_index "events", ["study_id"], name: "index_events_on_study_id"
 
   create_table "field_types", force: :cascade do |t|
     t.string   "name"
@@ -47,25 +60,10 @@ ActiveRecord::Schema.define(version: 20160313144736) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "study_id"
   end
 
-  create_table "participant_study_event_form_fields", force: :cascade do |t|
-    t.integer  "participant_event_form_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "participant_study_event_form_fields", ["participant_event_form_id"], name: "index_peff_on_pef_id"
-
-  create_table "participant_study_event_forms", force: :cascade do |t|
-    t.integer  "participant_id"
-    t.integer  "event_form_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "participant_study_event_forms", ["event_form_id"], name: "index_participant_study_event_forms_on_event_form_id"
-  add_index "participant_study_event_forms", ["participant_id"], name: "index_participant_study_event_forms_on_participant_id"
+  add_index "forms", ["study_id"], name: "index_forms_on_study_id"
 
   create_table "participants", force: :cascade do |t|
     t.string   "participant_id"
@@ -81,36 +79,6 @@ ActiveRecord::Schema.define(version: 20160313144736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "study_event_forms", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "study_event_id"
-    t.integer  "study_form_id"
-  end
-
-  add_index "study_event_forms", ["study_event_id"], name: "index_study_event_forms_on_study_event_id"
-  add_index "study_event_forms", ["study_form_id"], name: "index_study_event_forms_on_study_form_id"
-
-  create_table "study_events", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "study_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "study_events", ["event_id"], name: "index_study_events_on_event_id"
-  add_index "study_events", ["study_id"], name: "index_study_events_on_study_id"
-
-  create_table "study_forms", force: :cascade do |t|
-    t.integer  "study_id"
-    t.integer  "form_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "study_forms", ["form_id"], name: "index_study_forms_on_form_id"
-  add_index "study_forms", ["study_id"], name: "index_study_forms_on_study_id"
 
   create_table "study_users", force: :cascade do |t|
     t.integer  "study_id",   null: false

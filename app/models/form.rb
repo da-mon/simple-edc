@@ -1,7 +1,9 @@
 class Form < ActiveRecord::Base
-  has_many :study_forms
-  has_many :studies, :through => :study_forms
+  belongs_to :study
 
   has_many :fields
   accepts_nested_attributes_for :fields, reject_if: :all_blank, allow_destroy: true
+
+  has_many :event_forms
+  # has_many :events, :through => :event_forms
 end

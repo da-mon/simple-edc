@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  has_many :study_events
-  has_many :studies, :through => :study_events
-  has_many :study_event_forms, :through => :study_events, :autosave => true
-  accepts_nested_attributes_for :study_event_forms, reject_if: :all_blank, allow_destroy: true
+  belongs_to :study
+  has_many :event_forms
+  has_many :forms, :through => :event_forms
+  accepts_nested_attributes_for :event_forms, reject_if: :all_blank, allow_destroy: true
 end
