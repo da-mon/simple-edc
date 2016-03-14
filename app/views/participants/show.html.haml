@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Participant:
+  = @participant.participant_identifier
+
+= link_to 'Edit', edit_study_participant_path(@study, @participant)
+|
+= link_to 'Back to study', study_path(@study)

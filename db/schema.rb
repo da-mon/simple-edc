@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313144736) do
+ActiveRecord::Schema.define(version: 20160314144638) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -84,9 +84,9 @@ ActiveRecord::Schema.define(version: 20160313144736) do
   add_index "participant_event_forms", ["participant_id"], name: "index_participant_event_forms_on_participant_id"
 
   create_table "participants", force: :cascade do |t|
-    t.string   "participant_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "participant_identifier"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "study_id"
   end
 

@@ -21,6 +21,13 @@
         %br/
       = link_to 'New Event', new_study_event_path(@study)
   %tr
+    %td Participants
+    %td
+      - @study.participants.each do |participant|
+        = link_to participant.participant_identifier, edit_study_participant_path(@study, participant)
+        %br/
+      = link_to 'New Participant', new_study_participant_path(@study)
+  %tr
     %td Users
     %td
       - @study.users.each do |user|
