@@ -1,7 +1,5 @@
 .nested-fields
   = f.inputs do
-    = f.inputs
-    -#-#= f.input :study_event, :as => :hidden, :input_html => { :value => StudyEvent.find_by_event_id(@event).id }
-    -#-#= f.input :study_event, :as => :select, :collection => StudyEvent.all.map { |se| [se.event.name, se.event.id] }
-    -#= f.input :form, :as => :select, :collection => Form.all.map { |f| [f.name, f.id] }
+    -#= f.inputs
+    = f.input :form, :as => :select, :collection => @study.forms.map { |f| [f.name, f.id] }
     = link_to_remove_association 'remove form', f
