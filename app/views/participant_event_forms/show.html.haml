@@ -1,12 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Participant:
-  = @participant_event_form.participant
-%p
-  %b Event form:
-  = @participant_event_form.event_form
+-#%p
+-#  %b Participant:
+-#  = @participant_event_form.participant
+-#%p
+-#  %b Event form:
+-#  = @participant_event_form.event_form
 
 = link_to 'Edit', edit_participant_event_form_path(@participant_event_form)
 \|
-= link_to 'Back', participant_event_forms_path
+= back_to_participant(@participant_event_form.participant)
