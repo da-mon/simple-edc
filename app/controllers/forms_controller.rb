@@ -27,8 +27,8 @@ class FormsController < ApplicationController
   def create
     respond_to do |format|
       if create_form
-        format.html { redirect_to [@study, @form], notice: 'Form was successfully created.' }
-        format.json { render :show, status: :created, location: [@study, @form] }
+        format.html { redirect_to [@form], notice: 'Form was successfully created.' }
+        format.json { render :show, status: :created, location: [@form] }
       else
         format.html { render :new }
         format.json { render json: @form.errors, status: :unprocessable_entity }
@@ -41,8 +41,8 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update(form_params)
-        format.html { redirect_to [@study, @form], notice: 'Form was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@study, @form] }
+        format.html { redirect_to [@form], notice: 'Form was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@form] }
       else
         format.html { render :edit }
         format.json { render json: @form.errors, status: :unprocessable_entity }
@@ -53,7 +53,6 @@ class FormsController < ApplicationController
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
-    @study.forms.delete(@form)
     @form.destroy
     respond_to do |format|
       format.html { redirect_to @study, notice: 'Form was successfully destroyed.' }

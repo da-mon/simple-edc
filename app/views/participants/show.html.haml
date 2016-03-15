@@ -1,9 +1,15 @@
 %p#notice= notice
-
 %p
   %b Participant:
   = @participant.participant_identifier
+  %table.table
+    - @study.events.each do |event|
+      %tr
+        %td
+          = event.name
+          - event.forms.each do |form|
+            = form.name
 
-= link_to 'Edit', edit_study_participant_path(@study, @participant)
+= link_to 'Edit', edit_participant_path(@participant)
 |
 = link_to 'Back to study', study_path(@study)

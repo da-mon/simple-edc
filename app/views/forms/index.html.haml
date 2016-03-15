@@ -10,7 +10,7 @@
       %tr
         %td= form.name
         %td= link_to 'Show', form
-        %td= link_to 'Edit', edit_study_form_path(@study, form)
+        %td= link_to 'Edit', edit_form_path(form)
         %td= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Form', new_study_form_path

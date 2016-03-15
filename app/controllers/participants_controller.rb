@@ -27,8 +27,8 @@ class ParticipantsController < ApplicationController
   def create
     respond_to do |format|
       if create_participant
-        format.html { redirect_to [@study, @participant], notice: 'Participant was successfully created.' }
-        format.json { render :show, status: :created, location: [@study, @participant] }
+        format.html { redirect_to [@participant], notice: 'Participant was successfully created.' }
+        format.json { render :show, status: :created, location: [@participant] }
       else
         format.html { render :new }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
@@ -41,8 +41,8 @@ class ParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @participant.update(participant_params)
-        format.html { redirect_to [@study, @participant], notice: 'Participant was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@study, @participant] }
+        format.html { redirect_to [@participant], notice: 'Participant was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@participant] }
       else
         format.html { render :edit }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
@@ -68,6 +68,7 @@ class ParticipantsController < ApplicationController
 
   def set_participant
       @participant = Participant.find(params[:id])
+      @study = @participant.study
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

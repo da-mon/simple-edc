@@ -1,32 +1,27 @@
 %p#notice= notice
 %p
-  %strong Name:
-  = @study.name
+  %strong
+    = @study.name
 %table.table
   %tr
     %td{:style => 'width:10%;'} Forms
     %td
       - @study.forms.each do |form|
-        = link_to form.name, edit_study_form_path(@study, form)
+        = link_to form.name, edit_form_path(form)
+        = link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }
         %br/
       = link_to 'New Form', new_study_form_path(@study)
   %tr
     %td Events
     %td
       - @study.events.each do |event|
-        = link_to event.name, edit_study_event_path(@study, event)
+        = link_to event.name, edit_event_path(event)
+        = link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
         -#- @study.forms.each do |form|
           -#= form.name
         -#= link_to form.name, edit_study_form_path(@study, form)
         %br/
       = link_to 'New Event', new_study_event_path(@study)
-  %tr
-    %td Participants
-    %td
-      - @study.participants.each do |participant|
-        = link_to participant.participant_identifier, edit_study_participant_path(@study, participant)
-        %br/
-      = link_to 'New Participant', new_study_participant_path(@study)
   %tr
     %td Users
     %td
@@ -34,6 +29,16 @@
         = user.name
         %br/
       = link_to 'New User', new_study_user_path(@study)
+
+%strong
+  Participants
+%table.table
+  %tr
+    %td
+      - @study.participants.each do |participant|
+        = link_to participant.participant_identifier, participant_path(participant)
+        %br/
+      = link_to 'New Participant', new_study_participant_path(@study)
 = link_to 'Edit', edit_study_path(@study)
 |
 = link_to 'Back to studies', studies_path

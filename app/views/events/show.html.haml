@@ -2,6 +2,6 @@
 %p
   %strong Name:
   = @event.name
-= link_to 'Edit', edit_study_event_path(@study, @event)
+= link_to 'Edit', edit_event_path(@event)
 |
-= link_to 'Back to study', study_path(@study)
+= link_to 'Back to study', study_path(@event.study)
