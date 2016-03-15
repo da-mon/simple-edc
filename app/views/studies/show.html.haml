@@ -8,7 +8,7 @@
     %td
       - @study.forms.each do |form|
         = link_to form.name, edit_form_path(form)
-        = link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to_delete(form)
         %br/
       = link_to 'New Form', new_study_form_path(@study)
   %tr
@@ -16,7 +16,7 @@
     %td
       - @study.events.each do |event|
         = link_to event.name, edit_event_path(event)
-        = link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to_delete(event)
         -#- @study.forms.each do |form|
           -#= form.name
         -#= link_to form.name, edit_study_form_path(@study, form)
@@ -36,7 +36,7 @@
   %tr
     %td
       - @study.participants.each do |participant|
-        = link_to participant.participant_identifier, participant_path(participant)
+        = link_to_participant(participant)
         %br/
       = link_to 'New Participant', new_study_participant_path(@study)
 = link_to 'Edit', edit_study_path(@study)
