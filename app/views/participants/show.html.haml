@@ -7,8 +7,9 @@
       %tr
         %td
           = event.name
-          - event.forms.each do |form|
-            = form.name
+          - event.event_forms.each do |event_form|
+            -#= link_to event_form.form.name, participant_event_form_path(ParticipantEventForm.find_or_create_by(:participant_id => @participant.id, :event_form_id => event_form.id))
+            = link_to event_form.form.name, new_participant_participant_event_form_path(@participant.id, {:event_form_id => event_form.id})
 
 = link_to 'Edit', edit_participant_path(@participant)
 |
