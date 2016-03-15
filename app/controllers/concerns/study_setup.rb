@@ -1,4 +1,4 @@
-module StudyController
+module StudySetup
   extend ActiveSupport::Concern
 
   included do

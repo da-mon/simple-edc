@@ -1,4 +1,4 @@
-module ParticipantController
+module ParticipantSetup
   extend ActiveSupport::Concern
 
   included do

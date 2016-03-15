@@ -1,5 +1,5 @@
 class ParticipantEventFormsController < ApplicationController
-  include ParticipantController
+  include ParticipantSetup
   before_action :set_participant_event_form, only: [:show, :edit, :update, :destroy]
 
   # GET /participant_event_forms

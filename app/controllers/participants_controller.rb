@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  include StudyController
+  include StudySetup
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   # GET /participants

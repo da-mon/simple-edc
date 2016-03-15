@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  include StudyController
+  include StudySetup
   before_action :set_form, only: [:show, :edit, :update, :destroy]
 
   # GET /forms
