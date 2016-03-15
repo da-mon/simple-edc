@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Participant event form:
+  = @participant_event_form_field.participant_event_form
+
+= link_to 'Edit', edit_participant_event_form_field_path(@participant_event_form_field)
+\|
+= link_to 'Back', participant_event_form_fields_path
