@@ -61,18 +61,18 @@ class ParticipantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def create_participant
     @participant = @study.participants.create(participant_params)
   end
 
   def set_participant
-      @participant = Participant.find(params[:id])
-      @study = @participant.study
-    end
+    @participant = Participant.find(params[:id])
+    @study = @participant.study
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def participant_params
-      params.require(:participant).permit(:participant_identifier)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def participant_params
+    params.require(:participant).permit(:participant_identifier)
+  end
 end

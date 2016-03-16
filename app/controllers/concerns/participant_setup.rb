@@ -9,5 +9,4 @@ module ParticipantSetup
     @participant = Participant.find(params[:participant_id])
   end
 
-
 end
