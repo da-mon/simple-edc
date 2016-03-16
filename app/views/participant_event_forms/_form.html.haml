@@ -1,7 +1,9 @@
-= semantic_form_for @participant_event_form do |f|
-  = f.inputs do
-    - @fields.each do |fi|
-      = peff_input(fi, f)
+= semantic_form_for @participant_event_form do |pef|
+  = pef.inputs do
+    - @fields.each_with_index do |fi, i|
+      = label_tag fi.label
+      = peff_input(fi, i)
+      %br/
 
-  = f.actions do
-    = f.action :submit, :as => :input
+  = pef.actions do
+    = pef.action :submit, :as => :input
