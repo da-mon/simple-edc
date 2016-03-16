@@ -1,6 +1,7 @@
 class ParticipantEventFormsController < ApplicationController
   include ParticipantSetup
   before_action :set_participant_event_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_fields, only: [:show, :edit, :update, :destroy]
 
   # GET /participant_event_forms
   # GET /participant_event_forms.json
@@ -63,13 +64,17 @@ class ParticipantEventFormsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_participant_event_form
-      @participant_event_form = ParticipantEventForm.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fields
+    @fields = @participant_event_form.event_form.form.fields
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def participant_event_form_params
-      params.require(:participant_event_form).permit(:participant_id, :event_form_id)
-    end
+  def set_participant_event_form
+    @participant_event_form = ParticipantEventForm.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def participant_event_form_params
+    params.require(:participant_event_form).permit(:participant_id, :event_form_id)
+  end
 end

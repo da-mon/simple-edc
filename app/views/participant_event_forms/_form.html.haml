@@ -1,7 +1,7 @@
 = semantic_form_for @participant_event_form do |f|
   = f.inputs do
-    = f.input :participant
-    = f.input :event_form
+    - @fields.each do |fi|
+      = peff_input(fi, f)
 
   = f.actions do
     = f.action :submit, :as => :input
