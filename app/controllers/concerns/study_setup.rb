@@ -8,6 +8,4 @@ module StudySetup
   def set_study
     @study = Study.find(params[:study_id])
   end
-
-
 end
