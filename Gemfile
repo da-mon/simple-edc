@@ -12,7 +12,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'formtastic'
 gem 'cocoon'
-# gem 'attr_extras'
+gem 'jquery-validation-rails'
 group :development, :test do
   gem 'byebug'
 end
@@ -29,6 +29,8 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem 'seed_dump'
+  gem 'seedbank'
 end
 group :development, :test do
   gem 'factory_girl_rails'

@@ -4,5 +4,5 @@ class EventForm < ActiveRecord::Base
 
   has_many :participant_event_forms
 
-  validates_uniqueness_of :event_id, :scope => :form_id
+  # validates_uniqueness_of :event_id, :scope => :form_id
 end

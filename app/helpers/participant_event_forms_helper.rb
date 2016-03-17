@@ -4,7 +4,7 @@ module ParticipantEventFormsHelper
   end
 
   def peff_input(field, i)
-    field_value_tag(field, get_name(i))
+    field_value_tag(field).call get_name(i) + get_type(field)
   end
 
   private
@@ -13,16 +13,27 @@ module ParticipantEventFormsHelper
     ParticipantEventFormField.where(:field_id => field.id, :participant_event_form_id => pef.id).first
   end
 
-  def get_name(i)
-    'patient_event_form[patient_event_form_fields_attributes][' + i.to_s + '][field_value]'
+  def field_value_tag(field)
+    if field.text? || field.number? || field.decimal?
+      method(:text_field_tag)
+    end
+    if field.text_area?
+      method(:text_area_tag)
+    end
+    if field.date?
+      method(:date_field_tag)
+    end
+    if field.date_time?
+      method(:datetime_field_tag)
+    end
   end
 
-  def field_value_tag(field, name)
-    case field.field_type.name
-      when 'text'
-        text_field_tag name
-      when 'text_big'
-        text_area_tag name
-    end
+  def get_name(i)
+    "patient_event_form[patient_event_form_fields_attributes][#{i}][field_value]"
+  end
+
+  def get_type(field)
+    # , number: 'true'
+    ''
   end
 end

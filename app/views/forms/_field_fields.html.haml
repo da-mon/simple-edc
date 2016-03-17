@@ -2,5 +2,5 @@
   = f.inputs do
     = f.input :code
     = f.input :label
-    = f.input :field_type, :label => 'Type'#, :as => :select, :collection => FieldType.all
+    = f.input :field_type, :label => 'Type', :as => :select, :collection => Field.field_types.keys.to_a
     = link_to_remove_association 'remove field', f
