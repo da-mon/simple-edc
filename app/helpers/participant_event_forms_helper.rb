@@ -4,7 +4,7 @@ module ParticipantEventFormsHelper
   end
 
   def peff_input(field, i)
-    field_value_tag(field).call get_name(i) + get_type(field)
+    field_value_tag(field).call get_name(i), nil, get_type(field)
   end
 
   private
@@ -26,6 +26,7 @@ module ParticipantEventFormsHelper
     if field.date_time?
       method(:datetime_field_tag)
     end
+    method(:text_field_tag)
   end
 
   def get_name(i)
@@ -33,7 +34,8 @@ module ParticipantEventFormsHelper
   end
 
   def get_type(field)
-    # , number: 'true'
-    ''
+    rules = Hash['data-rule-required', 'true', 'data-rule-' + field.field_type, 'true']
+    # extras
+    rules
   end
 end
