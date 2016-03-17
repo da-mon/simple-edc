@@ -8,8 +8,8 @@
   %tbody
     - @studies.each do |study|
       %tr
-        %td= study.name
-        %td= link_to 'Show', study
+        %td= link_to study.name, study
+        -#%td= link_to 'Show', study
         %td= link_to 'Edit', edit_study_path(study)
         %td= link_to 'Destroy', study, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
