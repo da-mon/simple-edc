@@ -8,7 +8,7 @@ module ParticipantEventFormsHelper
     end
 
     def call
-      method(tag_method).call name, nil, type
+      method(tag_method).call name, nil, rules
     end
 
     private
@@ -30,9 +30,11 @@ module ParticipantEventFormsHelper
       "patient_event_form[patient_event_form_fields_attributes][#{@i}][field_value]"
     end
 
-    def type
-      rules = Hash['data-rule-required', 'true', 'data-rule-' + @field.field_type, 'true']
-      # extras
+    def rules
+      rules = Hash['data-rule-' + @field.field_type, 'true']
+      if @field.required
+        rules.merge! Hash['data-rule-required', 'true']
+      end
       rules
     end
   end

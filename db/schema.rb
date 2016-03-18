@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317071508) do
+ActiveRecord::Schema.define(version: 20160318131153) do
 
   create_table "centres", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160317071508) do
     t.integer "form_id"
     t.string "label"
     t.integer "field_type"
+    t.boolean "required"
   end
 
   add_index "fields", ["form_id"], name: "index_fields_on_form_id"

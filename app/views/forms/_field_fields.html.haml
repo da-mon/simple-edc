@@ -4,4 +4,5 @@
     = f.input :code
     = f.input :label
     = f.input :field_type, :label => 'Type', :as => :select, :collection => Field.field_types.keys
+    = f.input :required
     = link_to_remove_association 'remove field', f
