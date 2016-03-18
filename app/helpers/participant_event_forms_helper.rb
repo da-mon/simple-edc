@@ -4,7 +4,7 @@ module ParticipantEventFormsHelper
   end
 
   def peff_input(field, i)
-    ParticipantEventFormFieldInput.new(field, i).call
+    ParticipantEventFormFieldInput::Tag.new(field, i).call
   end
 
   private
