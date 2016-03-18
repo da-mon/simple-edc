@@ -15,7 +15,7 @@ module ParticipantEventFormsHelper
 
     def tag_method
       case @field.field_type.to_sym
-        when :text, :date, :datetime
+        when :text, :date, :time
           @field.field_type + '_field_tag'
         when :textarea
           'text_area_tag'
