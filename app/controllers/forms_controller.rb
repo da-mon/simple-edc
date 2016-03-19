@@ -27,7 +27,7 @@ class FormsController < ApplicationController
   def create
     respond_to do |format|
       if create_form
-        format.html { redirect_to [@form], notice: 'Form was successfully created.' }
+        format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :show, status: :created, location: [@form] }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update(form_params)
-        format.html { redirect_to [@form], notice: 'Form was successfully updated.' }
+        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
         format.json { render :show, status: :ok, location: [@form] }
       else
         format.html { render :edit }
@@ -72,6 +72,12 @@ class FormsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def form_params
-    params.require(:form).permit(:name, fields_attributes: [:id, :code, :label, :field_type, :required, :_destroy])
+    params.require(:form).permit(:name,
+                                 fields_attributes: [:id,
+                                                     :code,
+                                                     :label,
+                                                     :field_type,
+                                                     :required,
+                                                     :_destroy])
   end
 end

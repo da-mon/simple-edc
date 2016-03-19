@@ -3,13 +3,26 @@ module ParticipantEventFormsHelper
     link_to 'Back to participant', participant_path(participant)
   end
 
-  def peff_input(field, i)
-    ParticipantEventFormFieldInput::Tag.new(field, i).call
+  def peff_id(pef, i)
+    if pef.peff(i)
+      hidden.new('id', i, pef.peff(i).id).call
+    end
+  end
+
+  def peff_field_id(field, i)
+    hidden.new('field_id', i, field.id).call
+  end
+
+  def peff_field_value(field, i, pef)
+    field_value.new(field, i, pef.peff(i)).call
   end
 
   private
+  def hidden
+    ParticipantEventFormFieldInput::Hidden
+  end
 
-  def participant_event_form_field(field, pef)
-    ParticipantEventFormField.where(:field_id => field.id, :participant_event_form_id => pef.id).first
+  def field_value
+    ParticipantEventFormFieldInput::FieldValue
   end
 end
