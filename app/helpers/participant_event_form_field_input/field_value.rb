@@ -11,7 +11,6 @@ module ParticipantEventFormFieldInput
     private
     def input_class
       Object.const_get("ParticipantEventFormFieldInput::Input::#{input_class_name.capitalize}")
-      # input_class_name.capitalize.constantize
     end
 
     def input_class_name

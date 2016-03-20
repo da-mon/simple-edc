@@ -8,6 +8,7 @@ module ParticipantEventFormFieldInput
       end
 
       private
+
       def field_value
         @peff.field_value if @peff
       end

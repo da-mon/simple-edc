@@ -6,6 +6,7 @@ module ParticipantEventFormFieldInput
       end
 
       private
+
       def field_value_tag
         case @field.field_type.to_sym
           when :text, :date, :time, :number
