@@ -14,15 +14,12 @@ module ParticipantEventFormsHelper
   end
 
   def peff_field_value(field, i, pef)
-    field_value.new(field, i, pef.peff(i)).call
+    ParticipantEventFormFieldInput::FieldValue.new(field, i, pef.peff(i)).call
   end
 
   private
   def hidden
-    ParticipantEventFormFieldInput::Hidden
+    ParticipantEventFormFieldInput::Input::Hidden
   end
 
-  def field_value
-    ParticipantEventFormFieldInput::FieldValue
-  end
 end

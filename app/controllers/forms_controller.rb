@@ -15,7 +15,7 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
-    @form = @study.forms.build
+    @form = @study.forms.buildfirst commit
   end
 
   # GET /forms/1/edit
@@ -78,6 +78,10 @@ class FormsController < ApplicationController
                                                      :label,
                                                      :field_type,
                                                      :required,
-                                                     :_destroy])
+                                                     :_destroy,
+                                                     field_values_attributes: [:id,
+                                                                               :field_value,
+                                                                               :label]
+                                 ])
   end
 end

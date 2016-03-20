@@ -1,33 +1,25 @@
 module ParticipantEventFormFieldInput
   class FieldValue
-    include ActionView::Helpers::FormTagHelper
-    include ParticipantEventFormFieldInput::Input
-
     def initialize(field, i, peff)
-      @peff = peff
-      @field = field
-      @i = i
+      @field, @i, @peff = field, i, peff
     end
 
     def call
-      method(field_value_tag).call input_name(@i, 'field_value'), field_value, Rules.new(@field).call
+      input_class.new('field_value', @field, @i, @peff).call
     end
 
     private
-    def field_value
-      @peff.field_value if @peff
+    def input_class
+      Object.const_get("ParticipantEventFormFieldInput::Input::#{input_class_name.capitalize}")
+      # input_class_name.capitalize.constantize
     end
 
-    def field_value_tag
+    def input_class_name
       case @field.field_type.to_sym
-        when :text, :date, :time
-          @field.field_type + '_field_tag'
-        when :textarea
-          'text_area_tag'
-        when :number, :decimal
-          'number_field_tag'
-        when :checkbox
-          'check_box_tag'
+        when :radio, :checkbox, :dropdown
+          @field.field_type
+        else
+          'text'
       end
     end
   end
