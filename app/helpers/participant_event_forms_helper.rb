@@ -5,21 +5,15 @@ module ParticipantEventFormsHelper
 
   def peff_id(pef, i)
     if pef.peff(i)
-      hidden.new('id', i, pef.peff(i).id).call
+      ParticipantEventFormFieldInput::Input::Hidden.new('id', i, pef.peff(i).id).call
     end
   end
 
   def peff_field_id(field, i)
-    hidden.new('field_id', i, field.id).call
+    ParticipantEventFormFieldInput::Input::Hidden.new('field_id', i, field.id).call
   end
 
   def peff_field_value(field, i, pef)
     ParticipantEventFormFieldInput::FieldValue.new(field, i, pef.peff(i)).call
   end
-
-  private
-  def hidden
-    ParticipantEventFormFieldInput::Input::Hidden
-  end
-
 end

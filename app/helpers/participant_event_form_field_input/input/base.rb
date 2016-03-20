@@ -8,10 +8,13 @@ module ParticipantEventFormFieldInput
       end
 
       private
+      def field_value
+        @peff.field_value if @peff
+      end
+
       def input_name
         "participant_event_form[participant_event_form_fields_attributes][#{@i}][#{@attribute}]"
       end
-
     end
   end
 end

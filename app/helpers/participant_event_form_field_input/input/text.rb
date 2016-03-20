@@ -16,10 +16,6 @@ module ParticipantEventFormFieldInput
             'number_field_tag'
         end
       end
-
-      def field_value
-        @peff.field_value if @peff
-      end
     end
   end
 end
