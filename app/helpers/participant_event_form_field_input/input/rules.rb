@@ -7,7 +7,10 @@ module ParticipantEventFormFieldInput
 
       def call
         rules = Hash['data-rule-' + @field.field_type, 'true']
-        rules.merge! Hash['data-rule-required', 'true'] if @field.required
+        if @field.required?
+          rules.merge! Hash['data-rule-required', 'true']
+        end
+        rules
       end
     end
   end
