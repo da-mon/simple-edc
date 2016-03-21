@@ -1,0 +1,10 @@
+= form_for @field_value do |f|
+  - if @field_value.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@field_value.errors.count, "error")} prohibited this field_value from being saved:"
+      %ul
+        - @field_value.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
