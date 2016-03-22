@@ -1,10 +1,11 @@
 class FieldValuesController < ApplicationController
+  before_action :set_field, only: [:new, :create, :index]
   before_action :set_field_value, only: [:show, :edit, :update, :destroy]
 
   # GET /field_values
   # GET /field_values.json
   def index
-    @field_values = FieldValue.all
+    @field_values = @field.field_values
   end
 
   # GET /field_values/1
@@ -14,7 +15,7 @@ class FieldValuesController < ApplicationController
 
   # GET /field_values/new
   def new
-    @field_value = FieldValue.new
+    @field_value = @field.field_values.build
   end
 
   # GET /field_values/1/edit
@@ -24,10 +25,8 @@ class FieldValuesController < ApplicationController
   # POST /field_values
   # POST /field_values.json
   def create
-    @field_value = FieldValue.new(field_value_params)
-
     respond_to do |format|
-      if @field_value.save
+      if create_field_value
         format.html { redirect_to @field_value, notice: 'Field value was successfully created.' }
         format.json { render :show, status: :created, location: @field_value }
       else
@@ -63,12 +62,20 @@ class FieldValuesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
+  def create_field_value
+    @field_value = @field.field_values.create(field_value_params)
+  end
+
+  def set_field
+    @field = Field.find(params[:field_id])
+  end
+
   def set_field_value
     @field_value = FieldValue.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def field_value_params
-    params.require(:field_value).permit(:references)
+    params.require(:field_value).permit(:id, :field_value, :label)
   end
 end

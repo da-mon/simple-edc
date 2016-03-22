@@ -1,8 +1,22 @@
 = semantic_form_for [@study, @form] do |f|
   -#= f.inputs
   = f.input :name
-  = f.semantic_fields_for :fields do |fi|
-    = render 'field_fields', f: fi
-  .links
-    = link_to_add_association 'add field', f, :fields
+  -#= f.semantic_fields_for :fields do |fi|
+  -#  = render 'field_fields', f: fi
+  -#%fieldset
+  -#  %legend
+  -#    Fields
+  %table.table
+    %tr
+      %td{:style => 'width:10%;'} Fields
+      %td
+    - @form.fields.each do |field|
+      %tr
+        %td
+          = link_to "#{field.code}", edit_field_path(field)
+        %td
+          = link_to 'values', field_field_values_path(field)
+          = link_to 'validations', field_field_values_path(field)
+          = link_to 'conditions', field_field_values_path(field)
+  = link_to 'Add field', new_form_field_path(@form)
   = f.actions
