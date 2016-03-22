@@ -8,7 +8,9 @@
     %td
       - @study.forms.each do |form|
         = link_to form.name, edit_form_path(form)
-        = link_to_delete(form)
+        - form.fields.each do |field|
+          = field.label
+        -#= link_to_delete(form)
         %br/
       = link_to 'New Form', new_study_form_path(@study)
   %tr
@@ -16,10 +18,9 @@
     %td
       - @study.events.each do |event|
         = link_to event.name, edit_event_path(event)
-        = link_to_delete(event)
-        -#- @study.forms.each do |form|
-          -#= form.name
-        -#= link_to form.name, edit_study_form_path(@study, form)
+        -#= link_to_delete(event)
+        - event.forms.each do |form|
+          = form.name
         %br/
       = link_to 'New Event', new_study_event_path(@study)
   %tr

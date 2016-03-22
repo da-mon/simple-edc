@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322122733) do
+ActiveRecord::Schema.define(version: 20160322152426) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -37,18 +37,6 @@ ActiveRecord::Schema.define(version: 20160322122733) do
   end
 
   add_index "events", ["study_id"], name: "index_events_on_study_id"
-
-  create_table "field_conditions", force: :cascade do |t|
-    t.integer  "field_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "comparison_target"
-    t.integer "comparison_operator"
-    t.string "comparison_operand"
-    t.string "conditional_operator"
-  end
-
-  add_index "field_conditions", ["field_id"], name: "index_field_conditions_on_field_id"
 
   create_table "field_validations", force: :cascade do |t|
     t.integer  "field_id"
