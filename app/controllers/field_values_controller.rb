@@ -69,6 +69,6 @@ class FieldValuesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def field_value_params
-    params.fetch(:field_value, {})
+    params.require(:field_value).permit(:references)
   end
 end
