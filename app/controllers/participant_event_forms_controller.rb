@@ -28,7 +28,8 @@ class ParticipantEventFormsController < ApplicationController
   # POST /participant_event_forms.json
   def create
     respond_to do |format|
-      if create_participant_event_form
+      create_participant_event_form
+      if @participant_event_form.persisted?
         format.html { redirect_to @participant_event_form, notice: 'Participant event form was successfully created.' }
         format.json { render :show, status: :created, location: @participant_event_form }
       else
@@ -65,9 +66,7 @@ class ParticipantEventFormsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def create_participant_event_form
-    @participant_event_form = @participant.participant_event_forms.create(participant_event_form_params)
-    @participant_event_form.event_form = EventForm.find(params[:event_form_id])
-    @participant_event_form.save
+    @participant_event_form = CreateParticipantEventFormService.new(@participant, participant_event_form_params, params[:event_form_id]).call
   end
 
   def set_participant
