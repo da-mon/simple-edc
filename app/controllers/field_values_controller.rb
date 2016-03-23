@@ -15,7 +15,7 @@ class FieldValuesController < ApplicationController
 
   # GET /field_values/new
   def new
-    @field_value = FieldValue.new
+    @field_value = @field.field_values.build
   end
 
   # GET /field_values/1/edit

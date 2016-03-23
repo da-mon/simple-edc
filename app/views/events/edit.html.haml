@@ -1,5 +1,7 @@
-%p %p %strong Editing Event
+%p
+%p
+  %strong
+    = @event
+  = link_to 'show', @event
 = render 'form'
-= link_to 'Show', @event
-|
 = back_to_study(@event.study)

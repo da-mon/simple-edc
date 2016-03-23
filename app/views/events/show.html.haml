@@ -7,12 +7,12 @@
   %tr
     %td{:style => 'width:10%;'}
       %strong
-        Fields
+        Forms
     %td
-      - @event.forms.each do |form|
+      - @event.event_forms.each do |ef|
         %strong
-          = link_to form, field_path(form)
-        = link_to_delete(form)
+          = link_to ef, edit_event_form_path(ef)
+        = link_to_delete(ef)
         %br/
-      = link_to add, new_event_form_path(@event)
+      = link_to add, new_event_event_form_path(@event)
 = back_to_study(@event.study)
