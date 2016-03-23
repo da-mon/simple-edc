@@ -1,3 +1,8 @@
-%h1 Editing Field
+%p#notice= notice
+%p
+  %strong
+    = @field.label
 = render 'form'
-= link_to 'Back to form', edit_form_path(@field.form)
+= link_to 'Show', @field
+|
+= link_to 'Back to form', form_path(@field.form)

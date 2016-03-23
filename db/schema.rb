@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322152426) do
+ActiveRecord::Schema.define(version: 20160322164354) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20160322152426) do
   add_index "field_validations", ["field_id"], name: "index_field_validations_on_field_id"
 
   create_table "field_values", force: :cascade do |t|
-    t.string   "field_value"
-    t.string   "label"
     t.integer  "field_id"
+    t.string "label"
+    t.string "field_value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

@@ -6,16 +6,16 @@
   -#%fieldset
   -#  %legend
   -#    Fields
-  %table.table
-    %tr
-      %td{:style => 'width:10%;'} Fields
-      %td
-    - @form.fields.each do |field|
-      %tr
-        %td
-          = link_to "#{field.code}", edit_field_path(field)
-        %td
-          = link_to 'values', field_field_values_path(field)
-          = link_to 'validations', field_field_values_path(field)
-  = link_to 'Add field', new_form_field_path(@form)
+  -#%table.table
+  -#  %tr
+  -#    %td{:style => 'width:10%;'} Fields
+  -#    -#%td
+  -#  - @form.fields.each do |field|
+  -#    %tr
+  -#      %td
+  -#        = link_to "#{field.code}", edit_field_path(field)
+  -#      -#%td
+  -#      -#  = link_to 'values', field_field_values_path(field)
+  -#      -#  = link_to 'validations', field_field_values_path(field)
+  -#= link_to 'Add field', new_form_field_path(@form)
   = f.actions

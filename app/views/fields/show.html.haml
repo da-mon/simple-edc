@@ -1,4 +1,22 @@
 %p#notice= notice
+%p
+  %strong Name:
+  = @field.label
+%table.table
+  %tr
+    %td{:style => 'width:10%;'} Values
+    %td
+      - @field.field_values.each do |fv|
+        -#= link_to fv.label, field_path(fc)
+        = fv.label
+        -#- form.fields.each do |field|
+        -#- form.fields.each do |field|
+        -#  = field.label
+        -#= link_to_delete(form)
+        %br/
+      = 'New Value'
+      -#= link_to 'New Value', new_form_field_path(@form)
+
 = link_to 'Edit', edit_field_path(@field)
 |
-= link_to 'Back', fields_path
+= link_to 'Back to form', form_path(@field.form)

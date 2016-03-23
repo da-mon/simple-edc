@@ -1,11 +1,11 @@
 class FieldsController < ApplicationController
-  before_action :set_form, only: [:new, :create]
+  before_action :set_form, only: [:new, :create, :index]
   before_action :set_field, only: [:show, :edit, :update, :destroy]
 
   # GET /fields
   # GET /fields.json
   def index
-    @fields = Field.all
+    @fields = @form.fields
   end
 
   # GET /fields/1
@@ -15,7 +15,7 @@ class FieldsController < ApplicationController
 
   # GET /fields/new
   def new
-    @field = Field.new
+    @field = @form.fields.build
   end
 
   # GET /fields/1/edit
@@ -25,10 +25,8 @@ class FieldsController < ApplicationController
   # POST /fields
   # POST /fields.json
   def create
-    @field = Field.new(field_params)
-
     respond_to do |format|
-      if @field.save
+      if create_field
         format.html { redirect_to @field, notice: 'Field was successfully created.' }
         format.json { render :show, status: :created, location: @field }
       else
@@ -43,7 +41,7 @@ class FieldsController < ApplicationController
   def update
     respond_to do |format|
       if @field.update(field_params)
-        format.html { redirect_to @field, notice: 'Field was successfully updated.' }
+        format.html { redirect_to @form, notice: 'Field was successfully updated.' }
         format.json { render :show, status: :ok, location: @field }
       else
         format.html { render :edit }
@@ -64,6 +62,10 @@ class FieldsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
+  def create_field
+    @form = @form.fields.create(field_params)
+  end
+
   def set_form
     @form = Form.find(params[:form_id])
   end
@@ -74,6 +76,15 @@ class FieldsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def field_params
-    params.fetch(:field, {})
+    params.require(:field).permit(:id,
+                                  :code,
+                                  :label,
+                                  :field_type,
+                                  :required,
+                                  :_destroy,
+                                  field_values_attributes: [:id,
+                                                            :field_value,
+                                                            :label]
+    )
   end
 end

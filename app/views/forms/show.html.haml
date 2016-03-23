@@ -2,6 +2,18 @@
 %p
   %strong Name:
   = @form.name
+%table.table
+  %tr
+    %td{:style => 'width:10%;'} Fields
+    %td
+      - @form.fields.each do |field|
+        = link_to field.label, field_path(field)
+        -#- form.fields.each do |field|
+        -#  = field.label
+        -#= link_to_delete(form)
+        %br/
+      = link_to 'New Field', new_form_field_path(@form)
+
 = link_to 'Edit', edit_form_path(@form)
 |
 = back_to_study(@form.study)
