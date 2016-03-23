@@ -6,4 +6,7 @@ class Study < BaseModel
 
   has_many :events
   has_many :forms
+
+  has_many :study_centres
+  has_many :centres, :through => :study_centres
 end
