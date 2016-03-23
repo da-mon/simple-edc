@@ -31,9 +31,10 @@
       %strong
         Users
     %td
-      - @study.users.each do |user|
+      - @study.study_users.each do |su|
         %strong
-          = user.email
+          = su.user.email
+        = link_to_delete(su)
         %br/
       = link_to add, new_study_user_path(@study)
   %tr
