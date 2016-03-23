@@ -1,4 +1,4 @@
-class Form < ActiveRecord::Base
+class Form < BaseModel
   belongs_to :study
 
   has_many :fields

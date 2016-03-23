@@ -1,7 +1,18 @@
-%p#notice= notice
 %p
-  %strong Name:
-  = @event.name
-= link_to 'Edit', edit_event_path(@event)
-|
+%p
+  %strong
+    = @event
+  = link_to 'edit', edit_event_path(@event)
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Fields
+    %td
+      - @event.forms.each do |form|
+        %strong
+          = link_to form, field_path(form)
+        = link_to_delete(form)
+        %br/
+      = link_to add, new_event_form_path(@event)
 = back_to_study(@event.study)

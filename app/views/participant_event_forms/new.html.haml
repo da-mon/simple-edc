@@ -1,8 +1,10 @@
-%h1
-  New form for
-  =@participant_event_form.participant.participant_identifier
-  -#=@participant_event_form.event_form.event.name
-  -#=@participant_event_form.event_form.form.name
+%p
+%p
+  %strong
+    New form for
+    =@participant_event_form.participant.participant_identifier
+    -#=@participant_event_form.event_form.event
+    -#=@participant_event_form.event_form.form
 
 = render 'form'
 = back_to_participant(@participant)

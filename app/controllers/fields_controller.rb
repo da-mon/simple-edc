@@ -81,10 +81,7 @@ class FieldsController < ApplicationController
                                   :label,
                                   :field_type,
                                   :required,
-                                  :_destroy,
-                                  field_values_attributes: [:id,
-                                                            :field_value,
-                                                            :label]
+                                  :_destroy
     )
   end
 end

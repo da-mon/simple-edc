@@ -1,2 +1,15 @@
-%h1 Index#index
-%p Find me in app/views/index/index.html.haml
+%p
+%p
+  %strong Home
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Studies
+    %td
+      - @studies.each do |study|
+        %strong
+          = link_to study, study_path(study)
+        = link_to_delete(study)
+        %br/
+      = link_to add, new_study_path

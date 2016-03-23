@@ -1,6 +1,6 @@
 module ParticipantEventFormFieldInput
   module Input
-    class Text < Base
+    class Text < BaseInput
       def call
         method(field_value_tag).call input_name, field_value, Rules.new(@field).call
       end

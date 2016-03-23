@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322164354) do
+ActiveRecord::Schema.define(version: 20160323115707) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160322164354) do
     t.string "conditional_operator"
     t.integer "validation_type"
     t.string "message"
+    t.string "name"
   end
 
   add_index "field_validations", ["field_id"], name: "index_field_validations_on_field_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160322164354) do
     t.string "field_value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string "name"
   end
 
   add_index "field_values", ["field_id"], name: "index_field_values_on_field_id"
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160322164354) do
     t.boolean  "required"
     t.integer  "format"
     t.string "number"
+    t.string "name"
   end
 
   add_index "fields", ["form_id"], name: "index_fields_on_form_id"

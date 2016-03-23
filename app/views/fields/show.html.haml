@@ -1,22 +1,46 @@
-%p#notice= notice
 %p
-  %strong Name:
-  = @field.label
+%p
+  %strong
+    = @field
+  = link_to 'edit', edit_field_path(@field)
+Code:
+=@field.code
+%br/
+Label:
+=@field.label
+%br/
+Number:
+=@field.number
+%br/
+Type:
+=@field.field_type
+%br/
+Required:
+=@field.required
+%br/
+%br/
+
 %table.table
   %tr
-    %td{:style => 'width:10%;'} Values
+    %td{:style => 'width:10%;'}
+      %strong
+        Values
     %td
       - @field.field_values.each do |fv|
-        -#= link_to fv.label, field_path(fc)
-        = fv.label
-        -#- form.fields.each do |field|
-        -#- form.fields.each do |field|
-        -#  = field.label
-        -#= link_to_delete(form)
+        %strong
+          = link_to fv.field_value, field_value_path(fv)
+        = link_to_delete(fv)
         %br/
-      = 'New Value'
+      = link_to add, new_field_field_value_path(@field)
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Validations
+    %td
+      - @field.field_validations.each do |fv|
+        %strong
+          = fv
+        %br/
+      = add
       -#= link_to 'New Value', new_form_field_path(@form)
-
-= link_to 'Edit', edit_field_path(@field)
-|
 = link_to 'Back to form', form_path(@field.form)

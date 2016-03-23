@@ -1,5 +1,5 @@
-%p#notice= notice
-%h1 Listing Forms
+%p
+%p %p %strong Listing Forms
 %table
   %thead
     %tr
@@ -8,7 +8,7 @@
   %tbody
     - @forms.each do |form|
       %tr
-        %td= form.name
+        %td= form
         %td= link_to 'Show', form
         %td= link_to 'Edit', edit_form_path(form)
         %td= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }

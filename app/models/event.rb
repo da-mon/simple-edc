@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < BaseModel
   belongs_to :study
   has_many :event_forms, :dependent => :destroy
   has_many :forms, :through => :event_forms

@@ -1,0 +1,13 @@
+%p
+%p
+  %strong
+    = @field_value
+  = link_to 'edit', edit_field_value_path(@field_value)
+Value:
+=@field_value.field_value
+%br/
+Label:
+=@field_value.label
+%br/
+%br/
+= link_to 'Back to field', field_path(@field_value.field)

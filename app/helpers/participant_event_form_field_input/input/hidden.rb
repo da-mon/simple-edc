@@ -1,6 +1,6 @@
 module ParticipantEventFormFieldInput
   module Input
-    class Hidden < Base
+    class Hidden < BaseInput
       def initialize(attribute, i, value)
         @attribute, @i, @value = attribute, i, value
       end

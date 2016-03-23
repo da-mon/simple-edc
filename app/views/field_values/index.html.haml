@@ -1,0 +1,19 @@
+%p %p %strong Listing field_values
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @field_values.each do |field_value|
+      %tr
+        %td= link_to 'Show', field_value
+        %td= link_to 'Edit', edit_field_value_path(field_value)
+        %td= link_to 'Destroy', field_value, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Field value', new_field_value_path

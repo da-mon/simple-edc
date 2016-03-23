@@ -1,6 +1,7 @@
-%h1
-  = 'Editing ' + @form.name
+%p
+%p
+  %strong
+    = @form
+  = link_to 'show', @form
 = render 'form'
-= link_to 'Show', @form
-|
 = back_to_study(@form.study)

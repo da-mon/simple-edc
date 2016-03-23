@@ -1,6 +1,6 @@
 module ParticipantEventFormFieldInput
   module Input
-    class Radio < Base
+    class Radio < BaseInput
       def call
         @field.field_values.map do |f|
           radio_button_tag(input_name,

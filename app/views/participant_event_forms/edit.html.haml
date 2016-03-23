@@ -1,7 +1,9 @@
-%h1
-  =@participant_event_form.participant.participant_identifier
-  =@participant_event_form.event_form.event.name
-  =@participant_event_form.event_form.form.name
+%p
+%p
+  %strong
+    =@participant_event_form.participant.participant_identifier
+    =@participant_event_form.event_form.event
+    =@participant_event_form.event_form.form
 
   = render 'form'
 

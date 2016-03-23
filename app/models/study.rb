@@ -1,4 +1,4 @@
-class Study < ActiveRecord::Base
+class Study < BaseModel
   has_many :participants
 
   has_many :study_users

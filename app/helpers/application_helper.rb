@@ -1,6 +1,14 @@
 module ApplicationHelper
   def link_to_delete(model)
-    link_to 'Destroy', model, method: :delete, data: {confirm: 'Are you sure?'}
+    link_to '-', model, method: :delete, data: {confirm: 'Are you sure?'}
+  end
+
+  def add
+    '+'
+  end
+
+  def link_to_back(model)
+    link_to "Back to #{model}", study_path(model)
   end
 
   def back_to_study(study)

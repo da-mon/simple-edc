@@ -1,6 +1,6 @@
 module ParticipantEventFormFieldInput
   module Input
-    class Base
+    class BaseInput
       include ActionView::Helpers::FormTagHelper
 
       def initialize(attribute, field, i, peff)

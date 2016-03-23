@@ -1,0 +1,8 @@
+%p
+%p
+  %strong
+    = @field_value
+
+= render 'form'
+
+= link_to 'Back to field', field_path(@field_value.field)
