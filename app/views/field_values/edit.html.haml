@@ -1,8 +1,10 @@
+- breadcrumb :field_value, @field_value
 %p
 %p
   %strong
     = @field_value
+  = link_to 'show', @field_value
 
 = render 'form'
 
-= link_to 'Back to field', field_path(@field_value.field)
+-#= link_to 'Back to field', field_path(@field_value.field)

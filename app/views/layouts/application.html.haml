@@ -13,4 +13,5 @@
       = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
+      = breadcrumbs pretext: '', separator: '', autoroot: true, display_single_fragment: true, link_current: true, style: :bootstrap
       = yield

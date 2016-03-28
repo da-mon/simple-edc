@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'high_voltage'
 gem 'pundit'
+gem 'gretel'
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'

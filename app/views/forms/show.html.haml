@@ -1,3 +1,4 @@
+- breadcrumb :form, @form
 %p
 %p
   %strong
@@ -19,4 +20,4 @@
         = link_to_delete(field)
         %br/
       = link_to add, new_form_field_path(@form)
-= back_to_study(@form.study)
+      -#= back_to_study(@form.study)

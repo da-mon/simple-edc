@@ -1,24 +1,25 @@
+- breadcrumb :field, @field
 %p
 %p
   %strong
     = @field
   = link_to 'edit', edit_field_path(@field)
-Code:
-=@field.code
-%br/
-Label:
-=@field.label
-%br/
-Number:
-=@field.number
-%br/
-Type:
-=@field.field_type
-%br/
-Required:
-=@field.required
-%br/
-%br/
+-#Code:
+-#=@field.code
+-#%br/
+-#Label:
+-#=@field.label
+-#%br/
+-#Number:
+-#=@field.number
+-#%br/
+-#Type:
+-#=@field.field_type
+-#%br/
+-#Required:
+-#=@field.required
+-#%br/
+-#%br/
 
 %table.table
   %tr
@@ -43,4 +44,4 @@ Required:
         %br/
       = add
       -#= link_to 'New Value', new_form_field_path(@form)
-= link_to 'Back to form', form_path(@field.form)
+      -#= link_to 'Back to form', form_path(@field.form)
