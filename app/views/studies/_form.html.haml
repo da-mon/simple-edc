@@ -1,5 +1,5 @@
 = semantic_form_for(@study) do |f|
   = f.input :name
-  = render current_user.role
+  = render 'form_links'
   .actions
     = f.submit 'Submit'

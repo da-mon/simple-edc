@@ -3,5 +3,23 @@
 %p
   %strong
     = @study
-  = link_to 'edit', edit_study_path(@study)
-  = render current_user.role
+  = link_to 'edit', edit_study_path(@study) if current_user.admin?
+  -#%ul{:style => 'padding:0px;'}
+  -#%li{:style => 'display:inline-block;width:49%'}
+  -#  %strong
+  -#    = link_to @study
+  -#- if current_user.admin?
+  -#  %li{:style => 'display:inline-block;width:49%'}
+  -#    = link_to 'admin', edit_study_path(@study)
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Participants
+    %td
+      - @study.participants.each do |participant|
+        %strong
+          = link_to_participant(participant)
+        %br/
+      = link_to add, new_study_participant_path(@study) if @study.id
+

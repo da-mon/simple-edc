@@ -81,6 +81,7 @@ class FieldsController < ApplicationController
                                   :name,
                                   :code,
                                   :label,
+                                  :number,
                                   :field_type,
                                   :required,
                                   :_destroy
