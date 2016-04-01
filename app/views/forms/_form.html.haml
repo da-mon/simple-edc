@@ -1,8 +1,5 @@
 = semantic_form_for [@study, @form] do |f|
-  -#= f.inputs
   = f.input :name
-  = f.semantic_fields_for :fields do |fi|
-    = render 'field_fields', f: fi
-  .links
-    = link_to_add_association 'add field', f, :fields
-  = f.actions
+  = render 'form_links'
+  .actions
+    = f.submit 'Submit'

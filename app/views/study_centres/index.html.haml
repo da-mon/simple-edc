@@ -1,0 +1,23 @@
+%h1 Listing study_centres
+
+%table
+  %thead
+    %tr
+      %th References
+      %th References
+      %th
+      %th
+      %th
+
+  %tbody
+    - @study_centres.each do |study_centre|
+      %tr
+        %td= study_centre.references
+        %td= study_centre.references
+        %td= link_to 'Show', study_centre
+        %td= link_to 'Edit', edit_study_centre_path(study_centre)
+        %td= link_to 'Destroy', study_centre, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Study centre', new_study_centre_path

@@ -1,6 +1,6 @@
 module ParticipantsHelper
   def link_to_participant_event_form(event_form)
-    link_to event_form.form.name, participant_event_form_link(get_participant_event_form(event_form), event_form.id)
+    link_to event_form.form, participant_event_form_link(get_participant_event_form(event_form), event_form.id)
   end
 
   private

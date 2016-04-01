@@ -15,7 +15,7 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
-    @form = @study.forms.buildfirst commit
+    @form = @study.forms.build
   end
 
   # GET /forms/1/edit
@@ -27,7 +27,7 @@ class FormsController < ApplicationController
   def create
     respond_to do |format|
       if create_form
-        format.html { redirect_to @form, notice: 'Form was successfully created.' }
+        format.html { redirect_to edit_form_path @form, notice: 'Form was successfully created.' }
         format.json { render :show, status: :created, location: [@form] }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update(form_params)
-        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
+        format.html { redirect_to edit_form_path @form, notice: 'Form was successfully updated.' }
         format.json { render :show, status: :ok, location: [@form] }
       else
         format.html { render :edit }
@@ -53,6 +53,7 @@ class FormsController < ApplicationController
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
+    @study = @form.study
     @form.destroy
     respond_to do |format|
       format.html { redirect_to @study, notice: 'Form was successfully destroyed.' }
@@ -72,16 +73,6 @@ class FormsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def form_params
-    params.require(:form).permit(:name,
-                                 fields_attributes: [:id,
-                                                     :code,
-                                                     :label,
-                                                     :field_type,
-                                                     :required,
-                                                     :_destroy,
-                                                     field_values_attributes: [:id,
-                                                                               :field_value,
-                                                                               :label]
-                                 ])
+    params.require(:form).permit(:name)
   end
 end

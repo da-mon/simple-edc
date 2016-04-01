@@ -1,10 +1,12 @@
-%h1
-  =@participant_event_form.participant.participant_identifier
-  =@participant_event_form.event_form.event.name
-  =@participant_event_form.event_form.form.name
+- breadcrumb :participant_event_form, @participant_event_form
+%p
+%p
+  %strong
+    =@participant_event_form.participant.participant_identifier
+    =@participant_event_form
 
   = render 'form'
 
 -#= link_to 'Show', @participant_event_form
 -#\|
-= back_to_participant(@participant_event_form.participant)
+  -#= back_to_participant(@participant_event_form.participant)

@@ -1,6 +1,6 @@
 module ParticipantEventFormFieldInput
   module Input
-    class Dropdown < Base
+    class Dropdown < BaseInput
       include ActionView::Helpers::FormOptionsHelper
 
       def call

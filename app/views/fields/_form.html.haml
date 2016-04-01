@@ -1,11 +1,15 @@
-= form_for(@field) do |f|
-  - if @field.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@field.errors.count, "error")
-        prohibited this field from being saved:
-      %ul
-        - @field.errors.full_messages.each do |message|
-          %li= message
+= semantic_form_for [@form, @field] do |f|
+  = f.input :name
+  = f.input :code
+  = f.input :label
+  = f.input :number
+  = f.input :field_type, :label => 'Type', :as => :select, :collection => Field.field_types.keys
+  = f.input :required
+  -#= 'Values'
+  -#= f.semantic_fields_for :field_values do |fi|
+  -#  = render 'field_value_fields', f: fi
+  -#.links
+  -#  = link_to_add_association 'add field value', f, :field_values
+  = render 'form_links'
   .actions
-    = f.submit
+    = f.submit 'Submit'

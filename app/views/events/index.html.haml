@@ -1,5 +1,5 @@
-%p#notice= notice
-%h1 Listing Events
+%p
+%p %p %strong Listing Events
 %table
   %thead
     %tr
@@ -8,7 +8,7 @@
   %tbody
     - @events.each do |event|
       %tr
-        %td= event.name
+        %td= event
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

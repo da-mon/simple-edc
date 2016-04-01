@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321110701) do
+ActiveRecord::Schema.define(version: 20160323143952) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -38,18 +38,6 @@ ActiveRecord::Schema.define(version: 20160321110701) do
 
   add_index "events", ["study_id"], name: "index_events_on_study_id"
 
-  create_table "field_conditions", force: :cascade do |t|
-    t.integer  "field_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "comparison_target"
-    t.integer "comparison_operator"
-    t.string "comparison_operand"
-    t.string "conditional_operator"
-  end
-
-  add_index "field_conditions", ["field_id"], name: "index_field_conditions_on_field_id"
-
   create_table "field_validations", force: :cascade do |t|
     t.integer  "field_id"
     t.datetime "created_at", null: false
@@ -60,16 +48,18 @@ ActiveRecord::Schema.define(version: 20160321110701) do
     t.string "conditional_operator"
     t.integer "validation_type"
     t.string "message"
+    t.string "name"
   end
 
   add_index "field_validations", ["field_id"], name: "index_field_validations_on_field_id"
 
   create_table "field_values", force: :cascade do |t|
-    t.string   "field_value"
-    t.string   "label"
     t.integer  "field_id"
+    t.string "label"
+    t.string "field_value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string "name"
   end
 
   add_index "field_values", ["field_id"], name: "index_field_values_on_field_id"
@@ -83,6 +73,8 @@ ActiveRecord::Schema.define(version: 20160321110701) do
     t.integer  "field_type"
     t.boolean  "required"
     t.integer  "format"
+    t.string "number"
+    t.string "name"
   end
 
   add_index "fields", ["form_id"], name: "index_fields_on_form_id"
@@ -131,6 +123,16 @@ ActiveRecord::Schema.define(version: 20160321110701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "study_centres", force: :cascade do |t|
+    t.integer "study_id"
+    t.integer "centre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "study_centres", ["centre_id"], name: "index_study_centres_on_centre_id"
+  add_index "study_centres", ["study_id"], name: "index_study_centres_on_study_id"
 
   create_table "study_users", force: :cascade do |t|
     t.integer  "study_id",   null: false

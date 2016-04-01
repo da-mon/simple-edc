@@ -1,44 +1,7 @@
-%p#notice= notice
+- breadcrumb :study, @study
+%p
 %p
   %strong
-    = @study.name
-%table.table
-  %tr
-    %td{:style => 'width:10%;'} Forms
-    %td
-      - @study.forms.each do |form|
-        = link_to form.name, edit_form_path(form)
-        = link_to_delete(form)
-        %br/
-      = link_to 'New Form', new_study_form_path(@study)
-  %tr
-    %td Events
-    %td
-      - @study.events.each do |event|
-        = link_to event.name, edit_event_path(event)
-        = link_to_delete(event)
-        -#- @study.forms.each do |form|
-          -#= form.name
-        -#= link_to form.name, edit_study_form_path(@study, form)
-        %br/
-      = link_to 'New Event', new_study_event_path(@study)
-  %tr
-    %td Users
-    %td
-      - @study.users.each do |user|
-        = user.name
-        %br/
-      = link_to 'New User', new_study_user_path(@study)
-
-%strong
-  Participants
-%table.table
-  %tr
-    %td
-      - @study.participants.each do |participant|
-        = link_to_participant(participant)
-        %br/
-      = link_to 'New Participant', new_study_participant_path(@study)
-= link_to 'Edit', edit_study_path(@study)
-|
-= link_to 'Back to studies', studies_path
+    = @study
+  = link_to 'edit', edit_study_path(@study)
+  = render current_user.role

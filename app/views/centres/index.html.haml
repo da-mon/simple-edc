@@ -1,5 +1,7 @@
-%p#notice= notice
-%h1 Listing Centres
+%p
+%p
+  %p
+    %strong Listing Centres
 %table
   %thead
     %tr
@@ -8,7 +10,7 @@
   %tbody
     - @centres.each do |centre|
       %tr
-        %td= centre.name
+        %td= centre
         %td= link_to 'Show', centre
         %td= link_to 'Edit', edit_centre_path(centre)
         %td= link_to 'Destroy', centre, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,4 @@
+= semantic_form_for [@event, @event_form] do |f|
+  = f.input :form_id, :as => :select, :collection => @event.study.forms.map { |f| [f.name, f.id] }
+  .actions
+    = f.submit 'Submit'

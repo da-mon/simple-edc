@@ -3,4 +3,8 @@ class Participant < ActiveRecord::Base
   has_many :participant_event_forms
   has_many :event_forms, :through => :participant_event_forms
   # has_many :forms, :through => :event_forms
+
+  def to_s
+    self.participant_identifier
+  end
 end

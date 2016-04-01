@@ -1,0 +1,55 @@
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Forms
+    %td
+      - @study.forms.each do |form|
+        %strong
+          = link_to form, edit_form_path(form)
+        = link_to_delete(form)
+        %br/
+      = link_to add, new_study_form_path(@study) if @study.id
+  %tr
+    %td
+      %strong
+        Events
+    %td
+      - @study.events.each do |event|
+        %strong
+          = link_to event, edit_event_path(event)
+        = link_to_delete(event)
+        %br/
+      = link_to add, new_study_event_path(@study) if @study.id
+  %tr
+    %td
+      %strong
+        Users
+    %td
+      - @study.study_users.each do |su|
+        %strong
+          = su.user.email
+        = link_to_delete(su)
+        %br/
+      = link_to add, new_study_user_path(@study) if @study.id
+  -#%tr
+  -#  %td
+  -#    %strong
+  -#      Centres
+  -#  %td
+  -#    - @study.study_centres.each do |sc|
+  -#      %strong
+  -#        = link_to sc, edit_study_centre_path(sc)
+  -#      = link_to_delete(sc)
+  -#      %br/
+  -#    = link_to add, new_study_centre_path(@study)
+  %tr
+    %td
+      %strong
+        Participants
+    %td
+      - @study.participants.each do |participant|
+        %strong
+          = link_to_participant(participant)
+        %br/
+      = link_to add, new_study_participant_path(@study) if @study.id

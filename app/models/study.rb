@@ -1,4 +1,4 @@
-class Study < ActiveRecord::Base
+class Study < BaseModel
   has_many :participants
 
   has_many :study_users
@@ -6,4 +6,7 @@ class Study < ActiveRecord::Base
 
   has_many :events
   has_many :forms
+
+  has_many :study_centres
+  has_many :centres, :through => :study_centres
 end

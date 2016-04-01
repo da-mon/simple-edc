@@ -1,7 +1,23 @@
-%p#notice= notice
+- breadcrumb :form, @form
 %p
-  %strong Name:
-  = @form.name
-= link_to 'Edit', edit_form_path(@form)
-|
-= back_to_study(@form.study)
+%p
+  %strong
+    = @form
+  = link_to 'edit', edit_form_path(@form)
+-#Name:
+-#=@form
+-#%br/
+-#%br/
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Fields
+    %td
+      - @form.fields.each do |field|
+        %strong
+          = link_to field, field_path(field)
+        = link_to_delete(field)
+        %br/
+      = link_to add, new_form_field_path(@form) if @form.id
+      -#= back_to_study(@form.study)

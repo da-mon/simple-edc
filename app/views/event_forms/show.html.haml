@@ -1,0 +1,7 @@
+- breadcrumb :event_form, @event_form
+%p
+%p
+  %strong
+  -#= @event
+  -#= @event_form
+  = link_to 'edit', edit_event_form_path(@event_form)

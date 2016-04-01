@@ -1,5 +1,8 @@
-%h1 Editing Field
+- breadcrumb :field, @field
+%p
+%p
+  %strong
+    = @field.label
+  -#= link_to 'show', @field
 = render 'form'
-= link_to 'Show', @field
-|
-= link_to 'Back', fields_path
+-#= link_to 'Back to form', form_path(@field.form)

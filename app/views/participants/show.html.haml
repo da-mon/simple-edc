@@ -1,15 +1,18 @@
-%p#notice= notice
+- breadcrumb :participant, @participant
 %p
-  %b Participant:
-  = @participant.participant_identifier
+%p
+  %strong
+    = @participant.participant_identifier
   %table.table
     - @study.events.each do |event|
       %tr
+        %td{:style => 'width:10%;'}
+          %strong
+            = event
         %td
-          = event.name
           - event.event_forms.each do |event_form|
             = link_to_participant_event_form(event_form)
 
-= link_to 'Edit', edit_participant_path(@participant)
-|
-= back_to_study(@study)
+            -#= link_to 'Edit', edit_participant_path(@participant)
+            -#|
+            -#= back_to_study(@study)

@@ -26,7 +26,7 @@ class StudiesController < ApplicationController
   def create
     respond_to do |format|
       if create_study
-        format.html { redirect_to @study, notice: 'Study was successfully created.' }
+        format.html { redirect_to edit_study_path @study, notice: 'Study was successfully created.' }
         format.json { render :show, status: :created, location: @study }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class StudiesController < ApplicationController
   def update
     respond_to do |format|
       if @study.update(study_params)
-        format.html { redirect_to @study, notice: 'Study was successfully updated.' }
+        format.html { redirect_to edit_study_path @study, notice: 'Study was successfully updated.' }
         format.json { render :show, status: :ok, location: @study }
       else
         format.html { render :edit }

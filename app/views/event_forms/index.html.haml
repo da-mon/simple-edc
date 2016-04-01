@@ -1,0 +1,19 @@
+%h1 Listing event_forms
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @event_forms.each do |event_form|
+      %tr
+        %td= link_to 'Show', event_form
+        %td= link_to 'Edit', edit_event_form_path(event_form)
+        %td= link_to 'Destroy', event_form, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Event form', new_event_form_path

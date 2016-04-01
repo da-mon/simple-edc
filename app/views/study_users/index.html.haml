@@ -1,0 +1,23 @@
+%h1 Listing study_users
+
+%table
+  %thead
+    %tr
+      %th Study
+      %th User
+      %th
+      %th
+      %th
+
+  %tbody
+    - @study_users.each do |study_user|
+      %tr
+        %td= study_user.study
+        %td= study_user.user
+        %td= link_to 'Show', study_user
+        %td= link_to 'Edit', edit_study_user_path(study_user)
+        %td= link_to 'Destroy', study_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Study user', new_study_user_path

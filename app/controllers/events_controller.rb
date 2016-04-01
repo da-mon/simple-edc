@@ -27,8 +27,8 @@ class EventsController < ApplicationController
   def create
     respond_to do |format|
       if create_event
-        format.html { redirect_to [@event], notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: [@event] }
+        format.html { redirect_to edit_event_path @event, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: [@event.study] }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -41,8 +41,8 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to [@event], notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@event] }
+        format.html { redirect_to edit_event_path @event, notice: 'Event was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@event.study] }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -53,9 +53,10 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    @study = @event.study
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to edit_study_path @study, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +73,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name, event_forms_attributes: [:id, :form_id, :_destroy])
+    params.require(:event).permit(:name)
   end
 end

@@ -1,5 +1,6 @@
-%p#notice= notice
-%h1 Listing Studies
+%p
+  %p
+    %strong Listing Studies
 %table.table
   %thead
     %tr
@@ -8,9 +9,7 @@
   %tbody
     - @studies.each do |study|
       %tr
-        %td= link_to study.name, study
-        -#%td= link_to 'Show', study
-        %td= link_to 'Edit', edit_study_path(study)
-        %td= link_to 'Destroy', study, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to study, edit_study_path(study)
+        = link_to_delete(study)
 %br/
-= link_to 'New Study', new_study_path
+= link_to add, new_study_path

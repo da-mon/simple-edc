@@ -4,9 +4,15 @@
     = f.input :code
     = f.input :label
     = f.input :field_type, :label => 'Type', :as => :select, :collection => Field.field_types.keys
-    = f.semantic_fields_for :field_values do |fi|
-      = render 'field_value_fields', f: fi
-    .links
-      = link_to_add_association 'add value', f, :field_values
     = f.input :required
-    = link_to_remove_association 'remove field', f
+    = field_field_values_path 1
+      -#= f.semantic_fields_for :field_values do |fi|
+      -#  = edit_field_value_path 1
+      -#  %br/
+      -#.links
+      -#  = new_field_field_value_path 1
+      -#  = render 'field_value_fields', f: fi
+      -#.links
+      -#  = link_to_add_association 'add value', f, :field_values
+
+      -#= link_to_remove_association 'remove field', f
