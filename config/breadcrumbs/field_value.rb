@@ -1,5 +1,5 @@
 crumb :field_value do |field_value|
-  link field_value, field_value_path(field_value)
+  link field_value, edit_field_value_path(field_value)
   parent :field, field_value.field
 end
 

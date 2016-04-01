@@ -27,7 +27,7 @@ class FieldsController < ApplicationController
   def create
     respond_to do |format|
       if create_field
-        format.html { redirect_to @field, notice: 'Field was successfully created.' }
+        format.html { redirect_to edit_field_path @field, notice: 'Field was successfully created.' }
         format.json { render :show, status: :created, location: @field }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class FieldsController < ApplicationController
   def update
     respond_to do |format|
       if @field.update(field_params)
-        format.html { redirect_to @field, notice: 'Field was successfully updated.' }
+        format.html { redirect_to edit_field_path @field, notice: 'Field was successfully updated.' }
         format.json { render :show, status: :ok, location: @field }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FieldsController < ApplicationController
     @form = @field.form
     @field.destroy
     respond_to do |format|
-      format.html { redirect_to @form, notice: 'Field was successfully destroyed.' }
+      format.html { redirect_to edit_form_path @form, notice: 'Field was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

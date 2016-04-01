@@ -1,5 +1,5 @@
 crumb :form do |form|
-  link form, form_path(form)
+  link form, edit_form_path(form)
   parent :study, form.study
 end
 

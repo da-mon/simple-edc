@@ -3,4 +3,5 @@
 %p
   %strong
     = @study
+  = link_to 'edit', edit_study_path(@study)
   = render current_user.role

@@ -29,7 +29,7 @@ class FieldValuesController < ApplicationController
 
     respond_to do |format|
       if create_field_value
-        format.html { redirect_to @field_value.field, notice: 'Field value was successfully created.' }
+        format.html { redirect_to edit_field_path @field_value.field, notice: 'Field value was successfully created.' }
         format.json { render :show, status: :created, location: @field_value.field }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class FieldValuesController < ApplicationController
   def update
     respond_to do |format|
       if @field_value.update(field_value_params)
-        format.html { redirect_to @field_value.field, notice: 'Field value was successfully updated.' }
+        format.html { redirect_to edit_field_path @field_value.field, notice: 'Field value was successfully updated.' }
         format.json { render :show, status: :ok, location: @field_value.field }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class FieldValuesController < ApplicationController
   def destroy
     @field_value.destroy
     respond_to do |format|
-      format.html { redirect_to @field, notice: 'Field value was successfully destroyed.' }
+      format.html { redirect_to edit_field_path @field, notice: 'Field value was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

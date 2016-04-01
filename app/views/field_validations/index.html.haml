@@ -1,0 +1,19 @@
+%h1 Listing field_validations
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @field_validations.each do |field_validation|
+      %tr
+        %td= link_to 'Show', field_validation
+        %td= link_to 'Edit', edit_field_validation_path(field_validation)
+        %td= link_to 'Destroy', field_validation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Field validation', new_field_validation_path

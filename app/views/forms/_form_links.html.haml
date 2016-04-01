@@ -1,0 +1,12 @@
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Fields
+    %td
+      - @form.fields.each do |field|
+        %strong
+          = link_to field, edit_field_path(field)
+        = link_to_delete(field)
+        %br/
+      = link_to add, new_form_field_path(@form) if @form.id

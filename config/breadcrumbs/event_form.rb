@@ -1,5 +1,5 @@
 crumb :event_form do |event_form|
-  link event_form, event_form_path(event_form)
+  link event_form, edit_event_form_path(event_form)
   parent :event, event_form.event
 end
 

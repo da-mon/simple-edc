@@ -1,5 +1,5 @@
 crumb :event do |event|
-  link event, event_path(event)
+  link event, edit_event_path(event)
   parent :study, event.study
 end
 

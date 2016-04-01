@@ -1,0 +1,13 @@
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Forms
+    %td
+      - @event.event_forms.each do |ef|
+        %strong
+          = link_to ef, edit_event_form_path(ef)
+        = link_to_delete(ef)
+        %br/
+      = link_to add, new_event_event_form_path(@event) if @event.id
+      -#= back_to_study(@event.study)

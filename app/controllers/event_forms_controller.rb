@@ -29,7 +29,7 @@ class EventFormsController < ApplicationController
 
     respond_to do |format|
       if create_event_form
-        format.html { redirect_to @event_form.event, notice: 'Event form was successfully created.' }
+        format.html { redirect_to edit_event_path @event_form.event, notice: 'Event form was successfully created.' }
         format.json { render :show, status: :created, location: @event_form.event }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class EventFormsController < ApplicationController
   def update
     respond_to do |format|
       if @event_form.update(event_form_params)
-        format.html { redirect_to @event_form.event, notice: 'Event form was successfully updated.' }
+        format.html { redirect_to edit_event_path @event_form.event, notice: 'Event form was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_form.event }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class EventFormsController < ApplicationController
   def destroy
     @event_form.destroy
     respond_to do |format|
-      format.html { redirect_to @event, notice: 'Event form was successfully destroyed.' }
+      format.html { redirect_to edit_event_path @event, notice: 'Event form was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

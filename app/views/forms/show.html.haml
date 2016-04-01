@@ -19,5 +19,5 @@
           = link_to field, field_path(field)
         = link_to_delete(field)
         %br/
-      = link_to add, new_form_field_path(@form)
+      = link_to add, new_form_field_path(@form) if @form.id
       -#= back_to_study(@form.study)

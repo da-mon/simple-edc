@@ -6,10 +6,10 @@
     %td
       - @study.forms.each do |form|
         %strong
-          = link_to form, form
+          = link_to form, edit_form_path(form)
         = link_to_delete(form)
         %br/
-      = link_to add, new_study_form_path(@study)
+      = link_to add, new_study_form_path(@study) if @study.id
   %tr
     %td
       %strong
@@ -17,10 +17,10 @@
     %td
       - @study.events.each do |event|
         %strong
-          = link_to event, event
+          = link_to event, edit_event_path(event)
         = link_to_delete(event)
         %br/
-      = link_to add, new_study_event_path(@study)
+      = link_to add, new_study_event_path(@study) if @study.id
   %tr
     %td
       %strong
@@ -31,7 +31,7 @@
           = su.user.email
         = link_to_delete(su)
         %br/
-      = link_to add, new_study_user_path(@study)
+      = link_to add, new_study_user_path(@study) if @study.id
   -#%tr
   -#  %td
   -#    %strong
@@ -52,4 +52,4 @@
         %strong
           = link_to_participant(participant)
         %br/
-      = link_to add, new_study_participant_path(@study)
+      = link_to add, new_study_participant_path(@study) if @study.id

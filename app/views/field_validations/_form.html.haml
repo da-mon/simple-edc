@@ -1,0 +1,10 @@
+= form_for @field_validation do |f|
+  - if @field_validation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@field_validation.errors.count, "error")} prohibited this field_validation from being saved:"
+      %ul
+        - @field_validation.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

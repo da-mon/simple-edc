@@ -1,5 +1,6 @@
 = semantic_form_for [@study, @event] do |f|
   -#= f.inputs
   = f.input :name
+  = render 'form_links'
   .link
     = f.submit 'Submit'
