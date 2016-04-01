@@ -7,4 +7,8 @@ class ParticipantEventForm < ActiveRecord::Base
   def peff(i)
     self.participant_event_form_fields[i]
   end
+
+  def to_s
+    self.event_form.event.name + ' ' + self.event_form.form.name
+  end
 end

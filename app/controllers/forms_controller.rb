@@ -53,6 +53,7 @@ class FormsController < ApplicationController
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
+    @study = @form.study
     @form.destroy
     respond_to do |format|
       format.html { redirect_to @study, notice: 'Form was successfully destroyed.' }

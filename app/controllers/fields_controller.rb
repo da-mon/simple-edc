@@ -41,7 +41,7 @@ class FieldsController < ApplicationController
   def update
     respond_to do |format|
       if @field.update(field_params)
-        format.html { redirect_to @form, notice: 'Field was successfully updated.' }
+        format.html { redirect_to @field, notice: 'Field was successfully updated.' }
         format.json { render :show, status: :ok, location: @field }
       else
         format.html { render :edit }
@@ -53,9 +53,10 @@ class FieldsController < ApplicationController
   # DELETE /fields/1
   # DELETE /fields/1.json
   def destroy
+    @form = @field.form
     @field.destroy
     respond_to do |format|
-      format.html { redirect_to fields_url, notice: 'Field was successfully destroyed.' }
+      format.html { redirect_to @form, notice: 'Field was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -63,7 +64,7 @@ class FieldsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def create_field
-    @form = @form.fields.create(field_params)
+    @field = @form.fields.create(field_params)
   end
 
   def set_form
@@ -77,6 +78,7 @@ class FieldsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def field_params
     params.require(:field).permit(:id,
+                                  :name,
                                   :code,
                                   :label,
                                   :field_type,

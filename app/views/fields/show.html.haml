@@ -29,7 +29,7 @@
     %td
       - @field.field_values.each do |fv|
         %strong
-          = link_to fv.field_value, field_value_path(fv)
+          = link_to fv.label, edit_field_value_path(fv)
         = link_to_delete(fv)
         %br/
       = link_to add, new_field_field_value_path(@field)

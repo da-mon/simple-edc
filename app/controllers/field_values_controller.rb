@@ -29,11 +29,11 @@ class FieldValuesController < ApplicationController
 
     respond_to do |format|
       if create_field_value
-        format.html { redirect_to @field_value, notice: 'Field value was successfully created.' }
-        format.json { render :show, status: :created, location: @field_value }
+        format.html { redirect_to @field_value.field, notice: 'Field value was successfully created.' }
+        format.json { render :show, status: :created, location: @field_value.field }
       else
         format.html { render :new }
-        format.json { render json: @field_value.errors, status: :unprocessable_entity }
+        format.json { render json: @field_value.field.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,11 +47,11 @@ class FieldValuesController < ApplicationController
   def update
     respond_to do |format|
       if @field_value.update(field_value_params)
-        format.html { redirect_to @field_value, notice: 'Field value was successfully updated.' }
-        format.json { render :show, status: :ok, location: @field_value }
+        format.html { redirect_to @field_value.field, notice: 'Field value was successfully updated.' }
+        format.json { render :show, status: :ok, location: @field_value.field }
       else
         format.html { render :edit }
-        format.json { render json: @field_value.errors, status: :unprocessable_entity }
+        format.json { render json: @field_value.field.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,5 +1,5 @@
 class EventFormsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :index]
+  before_action :set_event, only: [:new, :create]
   before_action :set_event_form, only: [:show, :edit, :update, :destroy]
 
   # GET /event_forms
@@ -29,8 +29,8 @@ class EventFormsController < ApplicationController
 
     respond_to do |format|
       if create_event_form
-        format.html { redirect_to @event_form, notice: 'Event form was successfully created.' }
-        format.json { render :show, status: :created, location: @event_form }
+        format.html { redirect_to @event_form.event, notice: 'Event form was successfully created.' }
+        format.json { render :show, status: :created, location: @event_form.event }
       else
         format.html { render :new }
         format.json { render json: @event_form.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class EventFormsController < ApplicationController
   def update
     respond_to do |format|
       if @event_form.update(event_form_params)
-        format.html { redirect_to @event_form, notice: 'Event form was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event_form }
+        format.html { redirect_to @event_form.event, notice: 'Event form was successfully updated.' }
+        format.json { render :show, status: :ok, location: @event_form.event }
       else
         format.html { render :edit }
         format.json { render json: @event_form.errors, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class EventFormsController < ApplicationController
   def destroy
     @event_form.destroy
     respond_to do |format|
-      format.html { redirect_to event_forms_url, notice: 'Event form was successfully destroyed.' }
+      format.html { redirect_to @event, notice: 'Event form was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
