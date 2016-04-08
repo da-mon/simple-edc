@@ -25,8 +25,6 @@ class FieldValuesController < ApplicationController
   # POST /field_values
   # POST /field_values.json
   def create
-    @field_value = FieldValue.new(field_value_params)
-
     respond_to do |format|
       if create_field_value
         format.html { redirect_to edit_field_path @field_value.field, notice: 'Field value was successfully created.' }
@@ -36,10 +34,6 @@ class FieldValuesController < ApplicationController
         format.json { render json: @field_value.field.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def create_field_value
-    @field_value = @field.field_values.create(field_value_params)
   end
 
   # PATCH/PUT /field_values/1
@@ -58,10 +52,6 @@ class FieldValuesController < ApplicationController
 
   # DELETE /field_values/1
   # DELETE /field_values/1.json
-  def set_field
-    @field = Field.find(params[:field_id])
-  end
-
   def destroy
     @field_value.destroy
     respond_to do |format|
@@ -72,6 +62,14 @@ class FieldValuesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
+  def create_field_value
+    @field_value = @field.field_values.create(field_value_params)
+  end
+
+  def set_field
+    @field = Field.find(params[:field_id])
+  end
+
   def set_field_value
     @field_value = FieldValue.find(params[:id])
     @field = @field_value.field

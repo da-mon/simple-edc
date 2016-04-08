@@ -1,10 +1,6 @@
-= form_for @field_validation do |f|
-  - if @field_validation.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@field_validation.errors.count, "error")} prohibited this field_validation from being saved:"
-      %ul
-        - @field_validation.errors.full_messages.each do |msg|
-          %li= msg
-
+= semantic_form_for [@field, @field_validation] do |f|
+  = f.input :connector, :as => :select, :collection => FieldValidation.connectors.keys
+  = f.input :operator, :as => :select, :collection => FieldValidation.operators.keys
+  = f.input :operand
   .actions
-    = f.submit 'Save'
+    = f.submit 'Submit'

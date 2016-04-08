@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323143952) do
+ActiveRecord::Schema.define(version: 20160408114329) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -39,19 +39,15 @@ ActiveRecord::Schema.define(version: 20160323143952) do
   add_index "events", ["study_id"], name: "index_events_on_study_id"
 
   create_table "field_validations", force: :cascade do |t|
-    t.integer  "field_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "comparison_operator"
-    t.integer "comparison_type"
-    t.string "comparison_operand"
-    t.string "conditional_operator"
-    t.integer "validation_type"
-    t.string "message"
-    t.string "name"
+    t.integer "field_id"
+    t.text "created_at", null: false
+    t.text "updated_at", null: false
+    t.integer "validation_connector"
+    t.integer "validation_operator"
+    t.text "validation_operand"
   end
 
-  add_index "field_validations", ["field_id"], name: "index_field_validations_on_field_id"
+  add_index "field_validations", ["field_id"], name: "index_field_validations_on_field_id", unique: true
 
   create_table "field_values", force: :cascade do |t|
     t.integer  "field_id"
@@ -59,7 +55,6 @@ ActiveRecord::Schema.define(version: 20160323143952) do
     t.string "field_value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string "name"
   end
 
   add_index "field_values", ["field_id"], name: "index_field_values_on_field_id"

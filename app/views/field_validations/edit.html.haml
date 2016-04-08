@@ -1,7 +1,8 @@
-%h1 Editing field_validation
+- breadcrumb :field_validation, @field_validation
+%p
+%p
+  %strong
+    = @field_validation
+  -#= link_to 'show', @field_validation
 
 = render 'form'
-
-= link_to 'Show', @field_validation
-\|
-= link_to 'Back', field_validations_path
