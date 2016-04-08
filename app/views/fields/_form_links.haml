@@ -18,6 +18,7 @@
       - @field.field_validations.each do |fv|
         %strong
           = link_to fv, edit_field_validation_path(fv)
+        = link_to_delete(fv)
         %br/
       = link_to add, new_field_field_validation_path(@field) if @field.id
       -#= link_to 'New Value', new_form_field_path(@form)

@@ -10,6 +10,9 @@ module ParticipantEventFormFieldInput
         if @field.required?
           rules.merge! Hash['data-rule-required', 'true']
         end
+        if @field.field_validations
+          rules.merge! Hash['data-rule-validations', @field.field_validations.select('connector, operator, operand').to_json]
+        end
         rules
       end
     end

@@ -27,7 +27,7 @@ class FieldValidationsController < ApplicationController
   def create
     respond_to do |format|
       if create_field_validation
-        format.html { redirect_to edit_field_path @field_validation.field, notice: 'Field validation was successfully created.' }
+        format.html { redirect_to edit_field_path @field_validation.field, notice: 'Field statement was successfully created.' }
         format.json { render :show, status: :created, location: @field_validation.field }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class FieldValidationsController < ApplicationController
   def update
     respond_to do |format|
       if @field_validation.update(field_validation_params)
-        format.html { redirect_to edit_field_path @field_validation.field, notice: 'Field validation was successfully updated.' }
+        format.html { redirect_to edit_field_path @field_validation.field, notice: 'Field statement was successfully updated.' }
         format.json { render :show, status: :ok, location: @field_validation }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class FieldValidationsController < ApplicationController
   def destroy
     @field_validation.destroy
     respond_to do |format|
-      format.html { redirect_to edit_field_path @field, notice: 'Field validation was successfully destroyed.' }
+      format.html { redirect_to edit_field_path @field, notice: 'Field statement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
