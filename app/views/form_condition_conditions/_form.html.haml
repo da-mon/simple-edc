@@ -1,0 +1,7 @@
+= semantic_form_for [@form_condition, @form_condition_condition] do |f|
+  = f.input :connector, :as => :select, :collection => FormConditionCondition.connectors.keys
+  = f.input :field, :as => :select, :collection => @form_condition.form.fields
+  = f.input :operator, :as => :select, :collection => FormConditionCondition.operators.keys
+  = f.input :operand
+  .actions
+    = f.submit 'Submit'

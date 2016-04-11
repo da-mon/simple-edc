@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Form condition:
+  = @form_condition_field.form_condition
+%p
+  %b Field:
+  = @form_condition_field.field
+
+= link_to 'Edit', edit_form_condition_field_path(@form_condition_field)
+\|
+= link_to 'Back', form_condition_fields_path

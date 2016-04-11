@@ -1,0 +1,4 @@
+= semantic_form_for [@form_condition, @form_condition_field] do |f|
+  = f.input :field, :as => :select, :collection => @form_condition.form.fields
+  .actions
+    = f.submit 'Submit'

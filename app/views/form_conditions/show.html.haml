@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Form:
+  = @form_condition.form
+
+= link_to 'Edit', edit_form_condition_path(@form_condition)
+\|
+= link_to 'Back', form_conditions_path

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Form condition:
+  = @form_condition_condition.form_condition
+%p
+  %b Field:
+  = @form_condition_condition.field
+%p
+  %b Connector:
+  = @form_condition_condition.connector
+%p
+  %b Operator:
+  = @form_condition_condition.operator
+%p
+  %b Operand:
+  = @form_condition_condition.operand
+
+= link_to 'Edit', edit_form_condition_condition_path(@form_condition_condition)
+\|
+= link_to 'Back', form_condition_conditions_path

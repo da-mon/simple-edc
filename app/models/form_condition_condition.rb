@@ -1,4 +1,5 @@
-class FieldValidation < ActiveRecord::Base
+class FormConditionCondition < ActiveRecord::Base
+  belongs_to :form_condition
   belongs_to :field
 
   enum connector: [:'and', :'or']
@@ -11,6 +12,6 @@ class FieldValidation < ActiveRecord::Base
 
   def to_s
     start = self.connector ? self.connector + ' ' : ''
-    start + self.operator + ' ' + self.operand
+    start + self.field.name + ' ' + self.operator + ' ' + self.operand
   end
 end

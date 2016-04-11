@@ -10,3 +10,14 @@
         = link_to_delete(field)
         %br/
       = link_to add, new_form_field_path(@form) if @form.id
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Conditions
+    %td
+      - @form.form_conditions.each do |fc|
+        %strong
+          = link_to fc, edit_form_condition_path(fc)
+        = link_to_delete(fc)
+        %br/
+      = link_to add, new_form_form_condition_path(@form) if @form.id

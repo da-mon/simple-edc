@@ -1,0 +1,8 @@
+- breadcrumb :form_condition, @form_condition
+%p
+%p
+  %strong
+    = @form_condition
+  -#= link_to 'show', @form
+= render 'form'
+-#= back_to_study(@form.study)

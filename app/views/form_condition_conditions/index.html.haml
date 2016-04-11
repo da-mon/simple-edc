@@ -1,0 +1,29 @@
+%h1 Listing form_condition_conditions
+
+%table
+  %thead
+    %tr
+      %th Form condition
+      %th Field
+      %th Connector
+      %th Operator
+      %th Operand
+      %th
+      %th
+      %th
+
+  %tbody
+    - @form_condition_conditions.each do |form_condition_condition|
+      %tr
+        %td= form_condition_condition.form_condition
+        %td= form_condition_condition.field
+        %td= form_condition_condition.connector
+        %td= form_condition_condition.operator
+        %td= form_condition_condition.operand
+        %td= link_to 'Show', form_condition_condition
+        %td= link_to 'Edit', edit_form_condition_condition_path(form_condition_condition)
+        %td= link_to 'Destroy', form_condition_condition, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Form condition condition', new_form_condition_condition_path

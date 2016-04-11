@@ -1,0 +1,23 @@
+%table.table
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Conditions
+    %td
+      - @form_condition.form_condition_conditions.each do |fcc|
+        %strong
+          = link_to fcc, edit_form_condition_condition_path(fcc)
+        = link_to_delete(fcc)
+        %br/
+      = link_to add, new_form_condition_form_condition_condition_path(@form_condition) if @form_condition.id
+  %tr
+    %td{:style => 'width:10%;'}
+      %strong
+        Targets
+    %td
+      - @form_condition.form_condition_fields.each do |fcf|
+        %strong
+          = link_to fcf, edit_form_condition_field_path(fcf)
+        = link_to_delete(fcf)
+        %br/
+      = link_to add, new_form_condition_form_condition_field_path(@form_condition) if @form_condition.id
