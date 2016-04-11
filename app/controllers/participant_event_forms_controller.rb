@@ -77,6 +77,7 @@ class ParticipantEventFormsController < ApplicationController
 
   def set_participant_event_form
     @participant_event_form = ParticipantEventForm.find(params[:id])
+    @participant = @participant_event_form.participant
   end
 
   def set_fields
