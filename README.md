@@ -1,19 +1,21 @@
-How simple can EDC be?
+How simple, can EDC, be?
 
-Users login with accounts.
+Users login with accounts
 
-Users with admin accounts can setup studies and extract data.
+Users with admin accounts can setup studies and extract data
 
-Studies have forms, events, users, centres and participants.
+Studies have forms, events, users, centres and participants
 
-Forms have fields, which have types, values, validations and conditions.
+Forms have fields and conditions
 
-Forms and events can be associated.
+Fields have types, values and validations
 
-Users, participants and centres can be associated.
+Forms and events can be associated
 
-Users can add participants and submit forms for them.
+Users, participants and centres can be associated
 
-User access to participants can be limited by submission or centre.
+All users can add participants and submit forms for them
 
-Audit trails are available for all changes.
+User access to participants can be limited by submission or centre
+
+Audit trails are available for all changes

@@ -6,8 +6,4 @@ module ApplicationHelper
   def add
     '+'
   end
-
-  def link_to_if
-
-  end
 end

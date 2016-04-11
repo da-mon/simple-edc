@@ -4,6 +4,7 @@ module ParticipantsHelper
   end
 
   private
+
   def get_participant_event_form(event_form)
     ParticipantEventForm.where(:participant_id => @participant.id, :event_form_id => event_form.id).first
   end

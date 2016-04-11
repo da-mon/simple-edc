@@ -9,6 +9,7 @@ module ParticipantEventFormFieldInput
     end
 
     private
+
     def input_class
       Object.const_get("ParticipantEventFormFieldInput::Input::#{input_class_name.capitalize}")
     end

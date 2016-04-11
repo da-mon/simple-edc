@@ -1,11 +1,6 @@
-- breadcrumb :new_participant_event_form, @participant_event_form.participant
+- breadcrumb :new_participant_event_form, @participant, @event_form
 %p
 %p
   %strong
-    New form for
-    =@participant_event_form.participant.participant_identifier
-    -#=@participant_event_form.event_form.event
-    -#=@participant_event_form.event_form.form
-
+    = 'New form @ ' + @event_form.to_s + ' for ' + @participant.participant_identifier
 = render 'form'
--#= back_to_participant(@participant)

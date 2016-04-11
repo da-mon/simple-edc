@@ -17,7 +17,8 @@ class ParticipantEventFormsController < ApplicationController
   # GET /participant_event_forms/new
   def new
     @participant_event_form = @participant.participant_event_forms.build
-    @fields = EventForm.find(params[:event_form_id]).form.fields
+    @event_form = EventForm.find(params[:event_form_id])
+    @fields = @event_form.form.fields
   end
 
   # GET /participant_event_forms/1/edit
