@@ -1,14 +1,22 @@
 class FormCondition < ActiveRecord::Base
   belongs_to :form
+  belongs_to :field
   has_many :form_condition_conditions
   has_many :form_condition_fields
 
   def to_s
-    fc = self.form_condition_conditions.join(' ') + ' -> ' + self.form_condition_fields.join(', ')
-    if fc && !fc.empty?
-      fc
+    if !self.new_record?
+      self.conditions + ' -> ' + self.fields
     else
       'new form condition'
     end
+  end
+
+  def conditions
+    self.form_condition_conditions.join(' ')
+  end
+
+  def fields
+    self.form_condition_fields.join(', ')
   end
 end

@@ -1,5 +1,6 @@
 = semantic_form_for [@form, @form_condition] do |f|
   = f.input :form_id, :as => :hidden
+  = f.input :field_id, :as => :select, :collection => @form_condition.form.fields
   = render 'form_links'
   .actions
     = f.submit 'Submit'
