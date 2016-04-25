@@ -11,6 +11,9 @@ class FormConditionCondition < ActiveRecord::Base
                   :'less than or equal to']
 
   def to_s
+    if self.new_record?
+      return 'new condition'
+    end
     start = self.connector ? self.connector + ' ' : ''
     start + self.field.name + ' ' + self.operator + ' ' + self.operand
   end

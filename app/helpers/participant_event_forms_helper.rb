@@ -16,4 +16,8 @@ module ParticipantEventFormsHelper
   def peff_field_value(field, i, pef)
     ParticipantEventFormFieldInput::FieldValue.new(field, i, pef.peff(i)).call
   end
+
+  def conditions(fields)
+    ParticipantEventFormCondition.new(fields).call
+  end
 end
