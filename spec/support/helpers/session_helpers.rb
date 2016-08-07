@@ -8,6 +8,11 @@ module Features
       click_button 'Sign up'
     end
 
+    def given_i_am_logged_in
+      user = FactoryGirl.create(:user)
+      signin(user.email, user.password)
+    end
+
     def signin(email, password)
       visit new_user_session_path
       fill_in 'Email', with: email

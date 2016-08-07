@@ -1,4 +1,4 @@
-How simple, can EDC, be?
+Simple electronic data capture system
 
 Users login with accounts
 

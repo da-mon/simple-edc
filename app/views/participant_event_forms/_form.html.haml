@@ -1,6 +1,6 @@
 :javascript
   $(document).ready(function(){
-   #{conditions(@fields)}
+   #{conditions(@event_form.form)}
   });
 = semantic_form_for [@participant, @participant_event_form] do |f|
   = f.inputs do

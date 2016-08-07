@@ -16,7 +16,7 @@ class Validation
       value + ' ' +
       this.convert(v.operator, convert) + ' ' +
       v.operand for v in @validations).join(' ')
-  connector: (con, convert) ->
+  connector: (con) ->
     if con then con + ' ' else ''
   convert: (str, convert) ->
     if convert && str

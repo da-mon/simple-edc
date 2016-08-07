@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425153921) do
+ActiveRecord::Schema.define(version: 20160426085940) do
 
   create_table "centres", force: :cascade do |t|
     t.string   "name"
@@ -85,15 +85,15 @@ ActiveRecord::Schema.define(version: 20160425153921) do
   add_index "form_condition_conditions", ["field_id"], name: "index_form_condition_conditions_on_field_id"
   add_index "form_condition_conditions", ["form_condition_id"], name: "index_form_condition_conditions_on_form_condition_id"
 
-  create_table "form_condition_fields", force: :cascade do |t|
+  create_table "form_condition_targets", force: :cascade do |t|
     t.integer "form_condition_id"
     t.integer "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "form_condition_fields", ["field_id"], name: "index_form_condition_fields_on_field_id"
-  add_index "form_condition_fields", ["form_condition_id"], name: "index_form_condition_fields_on_form_condition_id"
+  add_index "form_condition_targets", ["field_id"], name: "index_form_condition_targets_on_field_id"
+  add_index "form_condition_targets", ["form_condition_id"], name: "index_form_condition_targets_on_form_condition_id"
 
   create_table "form_conditions", force: :cascade do |t|
     t.integer "form_id"
